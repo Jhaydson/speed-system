@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Web.Services.Description;
 
 [assembly: OwinStartupAttribute(typeof(SpeedSystem.Startup))]
 namespace SpeedSystem
@@ -9,6 +10,9 @@ namespace SpeedSystem
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
         }
+
+
     }
 }
