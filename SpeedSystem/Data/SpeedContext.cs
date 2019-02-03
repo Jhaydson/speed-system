@@ -10,5 +10,7 @@ namespace SpeedSystem.Data
         }
 
         public DbSet<SpeedSystem.Models.Department> Departents { get; set; }
+
+        public System.Data.Entity.DbSet<SpeedSystem.Models.ColorMesh> ColorMeshes { get; set; }
     }
 }

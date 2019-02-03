@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using SpeedSystem.Data;
+using SpeedSystem.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using SpeedSystem.Data;
-using SpeedSystem.Models;
 
 namespace SpeedSystem.Controllers
 {
