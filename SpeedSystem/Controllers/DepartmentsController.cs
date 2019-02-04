@@ -47,8 +47,17 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Departents.Add(department);
-                db.SaveChanges();
+                try
+                {
+                    db.Departents.Add(department);
+                    db.SaveChanges();
+                }
+                catch (System.Exception)
+                {                  
+                        ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
+                    return View(department);
+                    throw;
+                }
                 return RedirectToAction("Index");
             }
 
@@ -79,8 +88,17 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(department).State = EntityState.Modified;
-                db.SaveChanges();
+                try
+                {
+                    db.Entry(department).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                catch (System.Exception)
+                {
+                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
+                    return View(department);
+                    throw;
+                }
                 return RedirectToAction("Index");
             }
             return View(department);
