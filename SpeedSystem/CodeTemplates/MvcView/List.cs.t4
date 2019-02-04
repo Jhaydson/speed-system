@@ -12,7 +12,7 @@ if(IsPartialView) {
 #>
 
 @{
-    ViewBag.Title = "<#= ViewName#>";
+    ViewBag.Title = "<#= ViewDataTypeShortName#>";
 <#
 if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>

@@ -16,7 +16,7 @@ if(IsPartialView) {
 #>
 
 @{
-    ViewBag.Title = "<#= ViewName#>";
+    ViewBag.Title = "<#= ViewDataTypeShortName#>";
 <#
 if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
@@ -26,7 +26,6 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
 }
 
-<h2><#= ViewName#></h2>
 
 <#
 } else {
@@ -44,6 +43,27 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     <title><#= ViewName #></title>
 </head>
 <body>
+
+<!--breadcrumbs start-->
+<div id="breadcrumbs-wrapper">
+    <!-- Search for small screen -->
+    <div class="header-search-wrapper grey lighten-2 hide-on-large-only">
+        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s10 m6 l6">
+                <h5 class="breadcrumbs-title">@ViewBag.Title</h5>
+                <ol class="breadcrumbs">
+                    <li><a href="#">Configurações Gerais</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <#
     PushIndent("    ");
 }
@@ -78,9 +98,10 @@ if (ReferenceScriptLibraries) {
 {
     @Html.AntiForgeryToken()
     
+	<div class="container">
+        <div class="section">
     <div class="form-horizontal">
-        <h4><#= ViewDataTypeShortName #></h4>
-        <hr />
+       
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
@@ -102,18 +123,9 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
         }
 
 #>
-        <div class="form-group">
-<#
-        if (property.IsForeignKey) {
-#>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "control-label col-md-2" })
-<#
-        } else {
-#>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "control-label col-md-2" })
-<#
-        }
-#>
+        <div class="input-field col s6">
+
+
             <div class="col-md-10">
 <#
         bool isCheckbox = property.TypeName.Equals(boolType);
@@ -174,6 +186,17 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <#
         }
 #>
+<#
+        if (property.IsForeignKey) {
+#>
+            <label><#= property.PropertyName #></label>
+<#
+        } else {
+#>
+            <label><#= property.PropertyName #></label>
+<#
+        }
+#>
             </div>
         </div>
 
@@ -183,15 +206,17 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 #>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+				<a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                <input type="submit" value="Adicionar" class="btn btn-default" />
             </div>
         </div>
     </div>
+
+	</div>
+	</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>
