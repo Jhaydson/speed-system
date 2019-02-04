@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col s12">
                     <p>
-                        <a href="@Url.Action("Create", "Departments")" class="waves-effect waves-light btn-large bt-gg"> <i class="material-icons left">add</i>Adicionar </a>
+                        <a href="@Url.Action("Create")" class="waves-effect waves-light btn-large bt-gg"> <i class="material-icons left">add</i>Adicionar </a>
                     </p>
 
                     <table class="reponsive-table display striped highlight" cellpadding="0">
@@ -61,9 +61,9 @@
                                     </td>
                                     <td>
                                        
-                                        <a class="btn-floating #757575 grey darken-1" href="@Url.Action("Edit", "Departments", new { id = item.DepartmentId })"><i class="material-icons">mode_edit</i></a> |
-                                        <a class="btn-floating #1976d2 blue darken-2" href="@Url.Action("Details", "Departments", new { id = item.DepartmentId })"><i class="material-icons">remove_red_eye</i></a> |
-                                        <a class="btn-floating #e53935 red darken-1" href="@Url.Action("Delete", "Departments", new { id = item.DepartmentId })"><i class="material-icons">delete</i></a>
+                                        <a class="btn-floating #757575 grey darken-1" href="@Url.Action("Edit",  new { id = item.DepartmentId })"><i class="material-icons">mode_edit</i></a> |
+                                        <a class="btn-floating #1976d2 blue darken-2" href="@Url.Action("Details", new { id = item.DepartmentId })"><i class="material-icons">remove_red_eye</i></a> |
+                                        <a class="btn-floating #e53935 red darken-1" href="@Url.Action("Delete",  new { id = item.DepartmentId })"><i class="material-icons">delete</i></a>
                                     </td>
                                 </tr>
                             }

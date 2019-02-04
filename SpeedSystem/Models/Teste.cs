@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 
 namespace SpeedSystem.Models
@@ -9,5 +10,8 @@ namespace SpeedSystem.Models
     {
         public int TesteId { get; set; }
         public string Name { get; set; }
+
+
+         
     }
 }

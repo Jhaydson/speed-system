@@ -16,7 +16,7 @@ if(IsPartialView) {
 #>
 
 @{
-    ViewBag.Title = "<#= ViewName#>";
+    ViewBag.Title = "<#= ViewDataTypeShortName #>";
 <#
 if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
@@ -26,7 +26,6 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
 }
 
-<h2><#= ViewName#></h2>
 
 <#
 } else {
@@ -44,6 +43,10 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     <title><#= ViewName #></title>
 </head>
 <body>
+
+
+
+
 <#
     PushIndent("    ");
 }
@@ -74,13 +77,37 @@ if (ReferenceScriptLibraries) {
 <#
 }
 #>
+
+
+<!--breadcrumbs start-->
+<div id="breadcrumbs-wrapper">
+    <!-- Search for small screen -->
+    <div class="header-search-wrapper grey lighten-2 hide-on-large-only">
+        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s10 m6 l6">
+                <h5 class="breadcrumbs-title">@ViewBag.Title</h5>
+                <ol class="breadcrumbs">
+                    <li><a href="#">Configurações Gerais</a></li>
+                    <li class="active">@ViewBag.Title</li>
+
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    <div class="container">
+        <div class="section">
     <div class="form-horizontal">
-        <h4><#= ViewDataTypeShortName #></h4>
-        <hr />
+        
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
@@ -103,14 +130,11 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
         } else if (!property.IsReadOnly) {
 #>
         <div class="form-group">
+				<label><#= property.PropertyName #></label>
 <#
             if (property.IsForeignKey) {
 #>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "control-label col-md-2" })
-<#
-            } else {
-#>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "control-label col-md-2" })
+           
 <#
             }
 #>
@@ -121,7 +145,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 #>
 <# 
             if (isControlHtmlAttributesSupported) {
-#>
+#>			
                 @Html.DropDownList("<#= property.PropertyName #>", null, htmlAttributes: new { @class = "form-control" })
 <#
             } else {
@@ -171,9 +195,11 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
                 PopIndent();
 #>
                 </div>
+				<label><#= property.PropertyName #></label>
 <#
             }
 #>
+			
             </div>
         </div>
 
@@ -184,15 +210,16 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 #>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+			<a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
         </div>
     </div>
+	</div>
+	</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>

@@ -190,6 +190,7 @@
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TestesController.cs" />
     <Compile Include="Data\SpeedContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1435,6 +1436,11 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\Testes\Create.cshtml" />
+    <Content Include="Views\Testes\Delete.cshtml" />
+    <Content Include="Views\Testes\Details.cshtml" />
+    <Content Include="Views\Testes\Edit.cshtml" />
+    <Content Include="Views\Testes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
