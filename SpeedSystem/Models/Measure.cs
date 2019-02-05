@@ -1,19 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace SpeedSystem.Models
 {
-    public class Teste
+    public class Measure
     {
-        public int TesteId { get; set; }
+        [Key]
+        public int MeasureId { get; set; }
+
         [Required]
-        [Display(Name = "Departamentos")]
+        [Display(Name = "Unidade de Medida")]
         [MaxLength(50, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
-        [Index("Department_Name_Index", IsUnique = true)]
+        [Index("Measure_Name_Index", IsUnique = true)]
         public string Name { get; set; }
+
+        [Column(TypeName = "DateTime2")]
+        public DateTime DataCreate { get; set; }
+
     }
 }

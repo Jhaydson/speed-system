@@ -189,11 +189,11 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <#
         if (property.IsForeignKey) {
 #>
-            <label><#= property.PropertyName #></label>
+            <label><#= GetValueExpression(property) #>></label>
 <#
         } else {
 #>
-            <label><#= property.PropertyName #></label>
+            <label><#= GetValueExpression(property) #></label>
 <#
         }
 #>

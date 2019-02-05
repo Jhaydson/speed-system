@@ -130,7 +130,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
         } else if (!property.IsReadOnly) {
 #>
         <div class="form-group">
-				<label><#= property.PropertyName #></label>
+				<label><#= GetValueExpression(property) #></label>
 <#
             if (property.IsForeignKey) {
 #>

@@ -11,6 +11,8 @@ namespace SpeedSystem.Data
 
         public DbSet<SpeedSystem.Models.Department> Departents { get; set; }
 
-        public System.Data.Entity.DbSet<SpeedSystem.Models.Teste> Testes { get; set; }
+        public System.Data.Entity.DbSet<SpeedSystem.Models.Measure> Measures { get; set; }
+
+        public System.Data.Entity.DbSet<SpeedSystem.Models.ColorMesh> ColorMeshes { get; set; }
     }
 }

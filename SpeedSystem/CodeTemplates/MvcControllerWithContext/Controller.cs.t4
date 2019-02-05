@@ -165,7 +165,7 @@ namespace <#= Namespace #>
 				catch (System.Exception)
                 {
                     ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-                    return View(<#= entitySetName #>);
+                    return View(<#= ModelVariable #>);
                     throw;
                 }
                 return RedirectToAction("Index");
