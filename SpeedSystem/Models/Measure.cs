@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +15,9 @@ namespace SpeedSystem.Models
         [MaxLength(50, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
         [Index("Measure_Name_Index", IsUnique = true)]
         public string Name { get; set; }
+
+        public virtual ICollection<Mesh> Mesh { get; set; } = new List<Mesh>();
+
 
         [Column(TypeName = "DateTime2")]
         public DateTime DataCreate { get; set; }

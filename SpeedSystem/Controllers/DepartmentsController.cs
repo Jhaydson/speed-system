@@ -1,5 +1,6 @@
 ﻿using SpeedSystem.Data;
 using SpeedSystem.Models;
+using SpeedSystem.Models.Enuns;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -14,6 +15,7 @@ namespace SpeedSystem.Controllers
         // GET: Departments
         public ActionResult Index()
         {
+
             return View(db.Departents.ToList());
         }
 
@@ -53,8 +55,8 @@ namespace SpeedSystem.Controllers
                     db.SaveChanges();
                 }
                 catch (System.Exception)
-                {                  
-                        ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
+                {
+                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
                     return View(department);
                     throw;
                 }

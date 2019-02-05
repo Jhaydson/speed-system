@@ -200,13 +200,31 @@
     <Compile Include="Migrations\201902041909178_Att.Designer.cs">
       <DependentUpon>201902041909178_Att.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902051853206_Mig.cs" />
+    <Compile Include="Migrations\201902051853206_Mig.Designer.cs">
+      <DependentUpon>201902051853206_Mig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051855534_Mi2.cs" />
+    <Compile Include="Migrations\201902051855534_Mi2.Designer.cs">
+      <DependentUpon>201902051855534_Mi2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051857217_Mi3.cs" />
+    <Compile Include="Migrations\201902051857217_Mi3.Designer.cs">
+      <DependentUpon>201902051857217_Mi3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902051901083_Mi4.cs" />
+    <Compile Include="Migrations\201902051901083_Mi4.Designer.cs">
+      <DependentUpon>201902051901083_Mi4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ColorMesh.cs" />
     <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Enuns\YesOrNo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Measure.cs" />
+    <Compile Include="Models\Mesh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1472,6 +1490,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902041909178_Att.resx">
       <DependentUpon>201902041909178_Att.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051853206_Mig.resx">
+      <DependentUpon>201902051853206_Mig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051855534_Mi2.resx">
+      <DependentUpon>201902051855534_Mi2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051857217_Mi3.resx">
+      <DependentUpon>201902051857217_Mi3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902051901083_Mi4.resx">
+      <DependentUpon>201902051901083_Mi4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -149,9 +149,6 @@ namespace <#= Namespace #>
         {
             if (ModelState.IsValid)
             {
-
-			try{
-
 <# if(!String.IsNullOrEmpty(primaryKeyType) && String.Equals("System.Guid", primaryKeyType, StringComparison.OrdinalIgnoreCase)) { #>
                 <#= ModelVariable #>.<#= primaryKeyName #> = Guid.NewGuid();
 <# } #>
@@ -161,13 +158,6 @@ namespace <#= Namespace #>
 <# } else { #>
                 db.SaveChanges();
 <# } #>
-			}
-				catch (System.Exception)
-                {
-                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-                    return View(<#= ModelVariable #>);
-                    throw;
-                }
                 return RedirectToAction("Index");
             }
 
@@ -219,21 +209,12 @@ namespace <#= Namespace #>
         {
             if (ModelState.IsValid)
             {
-			try{
-
                 db.Entry(<#= ModelVariable #>).State = EntityState.Modified;
 <# if (UseAsync) { #>
                 await db.SaveChangesAsync();
 <# } else { #>
                 db.SaveChanges();
 <# } #>
-			}
-				catch (System.Exception)
-					{
-						ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-						return View(<#= ModelVariable #>);
-						throw;
-					}
                 return RedirectToAction("Index");
             }
 <# foreach (var property in relatedProperties.Values) { #>

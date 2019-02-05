@@ -14,5 +14,7 @@ namespace SpeedSystem.Data
         public System.Data.Entity.DbSet<SpeedSystem.Models.Measure> Measures { get; set; }
 
         public System.Data.Entity.DbSet<SpeedSystem.Models.ColorMesh> ColorMeshes { get; set; }
+
+        public System.Data.Entity.DbSet<SpeedSystem.Models.Mesh> Meshes { get; set; }
     }
 }

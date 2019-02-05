@@ -19,6 +19,11 @@ namespace SpeedSystem.Models
         [Index("ColorMesh_Name_Index", IsUnique = true)]
         public string Color { get; set; }
 
+        
+        public virtual ICollection<Mesh> Mesh { get; set; }
+
+
+
         [Column(TypeName = "DateTime2")]
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
