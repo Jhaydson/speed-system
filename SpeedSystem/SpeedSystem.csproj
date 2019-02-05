@@ -192,6 +192,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeasuresController.cs" />
+    <Compile Include="Controllers\MeshesController.cs" />
     <Compile Include="Data\SpeedContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1470,6 +1471,11 @@
     <Content Include="Views\ColorMeshes\Details.cshtml" />
     <Content Include="Views\ColorMeshes\Edit.cshtml" />
     <Content Include="Views\ColorMeshes\Index.cshtml" />
+    <Content Include="Views\Meshes\Create.cshtml" />
+    <Content Include="Views\Meshes\Delete.cshtml" />
+    <Content Include="Views\Meshes\Details.cshtml" />
+    <Content Include="Views\Meshes\Edit.cshtml" />
+    <Content Include="Views\Meshes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

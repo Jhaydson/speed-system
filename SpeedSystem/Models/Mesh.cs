@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
 
+
 namespace SpeedSystem.Models
 {
     public class Mesh
@@ -35,15 +36,19 @@ namespace SpeedSystem.Models
         [Display(Name = "Aceita Sublimação")]
         public YesOrNo Sublimation { get; set; }
 
-        //Qual a unidade de medida utilizada
         [Required]
+        public int MeasureId { get; set; }
+        [Required]
+        public int ColorMeshId { get; set; }
+        
+
+        //Qual a unidade de medida utilizada
+    
         public virtual Measure Measure { get; set; }
 
         //Qual a cor da malha
-        [Required]
+    
         public virtual ColorMesh ColorMesh { get; set; }
-
-
 
 
         //Data da criação do Item

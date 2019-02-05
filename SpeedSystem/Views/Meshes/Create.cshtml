@@ -1,0 +1,94 @@
+﻿@model SpeedSystem.Models.Mesh
+
+@{
+    ViewBag.Title = "Mesh";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+	<div class="container">
+        <div class="section">
+    <div class="form-horizontal">
+       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="input-field col s6">
+
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <label>@Html.DisplayNameFor(model => model.Name)</label>
+            </div>
+        </div>
+
+        <div class="input-field col s6">
+
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustValue, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustValue, "", new { @class = "text-danger" })
+            <label>@Html.DisplayNameFor(model => model.CustValue)</label>
+            </div>
+        </div>
+
+        <div class="input-field col s6">
+
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Yeild, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Yeild, "", new { @class = "text-danger" })
+            <label>@Html.DisplayNameFor(model => model.Yeild)</label>
+            </div>
+        </div>
+
+        <div class="input-field col s6">
+
+
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Sublimation, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Sublimation, "", new { @class = "text-danger" })
+            <label>@Html.DisplayNameFor(model => model.Sublimation)</label>
+            </div>
+        </div>
+
+        <div class="input-field col s6">
+
+
+            <div class="col-md-10">
+                @Html.DropDownList("MeasureId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MeasureId, "", new { @class = "text-danger" })
+          <label>@Html.DisplayNameFor(model => model.MeasureId)</label>
+            </div>
+        </div>
+
+        <div class="input-field col s6">
+
+
+            <div class="col-md-10">
+                @Html.DropDownList("ColorMeshId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ColorMeshId, "", new { @class = "text-danger" })
+          <label>@Html.DisplayNameFor(model => model.ColorMeshId)</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+				<a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                <input type="submit" value="Adicionar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+	</div>
+	</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

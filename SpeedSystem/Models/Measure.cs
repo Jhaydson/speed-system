@@ -16,7 +16,7 @@ namespace SpeedSystem.Models
         [Index("Measure_Name_Index", IsUnique = true)]
         public string Name { get; set; }
 
-        public virtual ICollection<Mesh> Mesh { get; set; } = new List<Mesh>();
+        public virtual ICollection<Mesh> Meshs { get; set; } = new List<Mesh>();
 
 
         [Column(TypeName = "DateTime2")]

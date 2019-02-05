@@ -19,8 +19,8 @@ namespace SpeedSystem.Models
         [Index("ColorMesh_Name_Index", IsUnique = true)]
         public string Color { get; set; }
 
-        
-        public virtual ICollection<Mesh> Mesh { get; set; }
+       
+        public virtual ICollection<Mesh> Meshs { get; set; } = new List<Mesh>();
 
 
 
