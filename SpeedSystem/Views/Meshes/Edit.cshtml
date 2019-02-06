@@ -1,7 +1,7 @@
 ﻿@model SpeedSystem.Models.Mesh
 
 @{
-    ViewBag.Title = "Mesh";
+    ViewBag.Title = "Controle de Malhas";
 }
 
 
@@ -41,7 +41,7 @@
         @Html.HiddenFor(model => model.MeshId)
 
         <div class="form-group">
-				<label>model.Name</label>
+            <label>@Html.DisplayNameFor(model => model.Name)</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -50,16 +50,17 @@
         </div>
 
         <div class="form-group">
-				<label>model.CustValue</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustValue, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustValue, "", new { @class = "text-danger" })
-			
-            </div>
+            <label>@Html.DisplayNameFor(model => model.CustValue)</label>
+                <div class="col-md-10">
+
+                    @Html.TextBoxFor(model => model.CustValue, new { @class = "form-control", @placeholder = "somente números", @id = "currency" })
+                    @Html.ValidationMessageFor(model => model.CustValue, "", new { @class = "text-danger" })
+
+                </div>
         </div>
 
         <div class="form-group">
-				<label>model.Yeild</label>
+            <label>@Html.DisplayNameFor(model => model.Yeild)</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Yeild, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Yeild, "", new { @class = "text-danger" })
@@ -68,7 +69,7 @@
         </div>
 
         <div class="form-group">
-				<label>model.Sublimation</label>
+            <label>@Html.DisplayNameFor(model => model.Sublimation)</label>
             <div class="col-md-10">
                 @Html.EnumDropDownListFor(model => model.Sublimation, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Sublimation, "", new { @class = "text-danger" })
@@ -77,7 +78,7 @@
         </div>
 
         <div class="form-group">
-				<label>model.MeasureId</label>
+            <label>@Html.DisplayNameFor(model => model.MeasureId)</label>
            
             <div class="col-md-10">
 			
@@ -88,7 +89,7 @@
         </div>
 
         <div class="form-group">
-				<label>model.ColorMeshId</label>
+            <label>@Html.DisplayNameFor(model => model.ColorMeshId)</label>
            
             <div class="col-md-10">
 			

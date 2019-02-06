@@ -23,8 +23,8 @@ namespace SpeedSystem.Models
         [Required]
         [Display(Name = "Valor de Custo")]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C0}")]
-        public float CustValue { get; set; }
+        [DisplayFormat(DataFormatString = "{0:f2}")]
+        public float? CustValue { get; set; }
 
         //Rendimento por Unidade de Medida
         [Required]
@@ -37,17 +37,17 @@ namespace SpeedSystem.Models
         public YesOrNo Sublimation { get; set; }
 
         [Required]
+        [Display(Name = "Unidade de Medida")]
         public int MeasureId { get; set; }
+
+
         [Required]
+        [Display(Name = "Cor da Malha")]
         public int ColorMeshId { get; set; }
         
 
-        //Qual a unidade de medida utilizada
-    
+        //Relacionamentos
         public virtual Measure Measure { get; set; }
-
-        //Qual a cor da malha
-    
         public virtual ColorMesh ColorMesh { get; set; }
 
 

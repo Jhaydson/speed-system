@@ -1,7 +1,7 @@
 ﻿@model SpeedSystem.Models.Mesh
 
 @{
-    ViewBag.Title = "Mesh";
+    ViewBag.Title = "Controle de Malhas";
 }
 
 
@@ -12,12 +12,12 @@
     <div class="section">
         <div class="col s12">
             <div>
-                
 
-	<a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
-    <a class=" waves-effect waves-light  btn #757575 grey darken-1" href="@Url.Action("Edit", new { id = Model.MeshId })"><i class="material-icons left">mode_edit</i>Editar</a>
 
-   
+                <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                <a class=" waves-effect waves-light  btn #757575 grey darken-1" href="@Url.Action("Edit", new { id = Model.MeshId })"><i class="material-icons left">mode_edit</i>Editar</a>
+
+
 
             </div> <br />
             <table class="Highlight striped">
@@ -30,9 +30,41 @@
                 </thead>
                 <tbody>
                     <tr>
-       <td> @Html.DisplayNameFor(model => model.ColorMesh.Color) </td>    
-      <td>  @Html.DisplayFor(model => model.ColorMesh.Color)</td>
-					</tr>
+                        <td> @Html.DisplayNameFor(model => model.ColorMesh.Color) </td>
+                        <td>  @Html.DisplayFor(model => model.ColorMesh.Color)</td>
+                    </tr>
+
+
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Measure.Name) </td>
+                        <td>  @Html.DisplayFor(model => model.Measure.Name)</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Name) </td>
+                        <td>  @Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+
+
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.CustValue) </td>
+                        <td>  @Html.DisplayFor(model => model.CustValue)</td>
+                    </tr>
+
+
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Yeild) </td>
+                        <td>  @Html.DisplayFor(model => model.Yeild)</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td> @Html.DisplayNameFor(model => model.Sublimation) </td>
+                        <td>  @Html.DisplayFor(model => model.Sublimation)</td>
+                    </tr>
 
                 </tbody>
             </table>
@@ -42,67 +74,7 @@
 </div>
 
 
-       <td> @Html.DisplayNameFor(model => model.Measure.Name) </td>    
-      <td>  @Html.DisplayFor(model => model.Measure.Name)</td>
-					</tr>
 
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-
-
-       <td> @Html.DisplayNameFor(model => model.Name) </td>    
-      <td>  @Html.DisplayFor(model => model.Name)</td>
-					</tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-
-
-       <td> @Html.DisplayNameFor(model => model.CustValue) </td>    
-      <td>  @Html.DisplayFor(model => model.CustValue)</td>
-					</tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-
-
-       <td> @Html.DisplayNameFor(model => model.Yeild) </td>    
-      <td>  @Html.DisplayFor(model => model.Yeild)</td>
-					</tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-
-
-       <td> @Html.DisplayNameFor(model => model.Sublimation) </td>    
-      <td>  @Html.DisplayFor(model => model.Sublimation)</td>
-					</tr>
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
-</div>
-
-
-  
 
 
 

@@ -117,7 +117,10 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
        <td> @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>) </td>    
       <td>  @Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)</td>
 					</tr>
-
+					<#
+    }
+}
+#>
                 </tbody>
             </table>
 
@@ -126,10 +129,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 </div>
 
 
-<#
-    }
-}
-#>
+
   
 
 
