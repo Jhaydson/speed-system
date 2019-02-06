@@ -1,9 +1,6 @@
 namespace SpeedSystem.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<SpeedSystem.Data.SpeedContext>
     {
@@ -15,7 +12,7 @@ namespace SpeedSystem.Migrations
 
         }
 
-        protected override void Seed(SpeedSystem.Data.SpeedContext context)
+        protected override void Seed(Data.SpeedContext context)
         {
             //  This method will be called after migrating to the latest version.
 

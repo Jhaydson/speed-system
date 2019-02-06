@@ -7,13 +7,13 @@ namespace SpeedSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Mi4 : IMigrationMetadata
+    public sealed partial class DB6 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Mi4));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DB6));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902051901083_Mi4"; }
+            get { return "201902061958408_DB6"; }
         }
         
         string IMigrationMetadata.Source

@@ -4,9 +4,9 @@ namespace SpeedSystem.Data
 {
     public class SpeedContext : DbContext
     {
-        public SpeedContext() : base ("DefaultConnection")
+        public SpeedContext() : base("DefaultConnection")
         {
-            
+
         }
 
         public DbSet<SpeedSystem.Models.Department> Departents { get; set; }
@@ -20,5 +20,7 @@ namespace SpeedSystem.Data
         public System.Data.Entity.DbSet<SpeedSystem.Models.PrintSize> PrintSizes { get; set; }
 
         public System.Data.Entity.DbSet<SpeedSystem.Models.TechnicalPrint> TechnicalPrints { get; set; }
+
+        public System.Data.Entity.DbSet<SpeedSystem.Models.Client> Clients { get; set; }
     }
 }

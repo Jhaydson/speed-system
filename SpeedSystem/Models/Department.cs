@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpeedSystem.Models
@@ -12,5 +13,8 @@ namespace SpeedSystem.Models
         [MaxLength(50, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
         [Index("Department_Name_Index", IsUnique = true)]
         public string Name { get; set; }
+
+
+        public ICollection<Employee> Employees { get; set; }
     }
 }
