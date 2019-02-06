@@ -193,6 +193,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeasuresController.cs" />
     <Compile Include="Controllers\MeshesController.cs" />
+    <Compile Include="Controllers\PrintSizesController.cs" />
+    <Compile Include="Controllers\TechnicalPrintsController.cs" />
     <Compile Include="Data\SpeedContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,6 +228,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Measure.cs" />
     <Compile Include="Models\Mesh.cs" />
+    <Compile Include="Models\PrintFile.cs" />
+    <Compile Include="Models\PrintSize.cs" />
+    <Compile Include="Models\TechnicalPrint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1477,6 +1482,16 @@
     <Content Include="Views\Meshes\Details.cshtml" />
     <Content Include="Views\Meshes\Edit.cshtml" />
     <Content Include="Views\Meshes\Index.cshtml" />
+    <Content Include="Views\PrintSizes\Create.cshtml" />
+    <Content Include="Views\PrintSizes\Delete.cshtml" />
+    <Content Include="Views\PrintSizes\Details.cshtml" />
+    <Content Include="Views\PrintSizes\Edit.cshtml" />
+    <Content Include="Views\PrintSizes\Index.cshtml" />
+    <Content Include="Views\TechnicalPrints\Create.cshtml" />
+    <Content Include="Views\TechnicalPrints\Delete.cshtml" />
+    <Content Include="Views\TechnicalPrints\Details.cshtml" />
+    <Content Include="Views\TechnicalPrints\Edit.cshtml" />
+    <Content Include="Views\TechnicalPrints\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

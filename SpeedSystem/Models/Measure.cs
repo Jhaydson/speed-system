@@ -16,7 +16,10 @@ namespace SpeedSystem.Models
         [Index("Measure_Name_Index", IsUnique = true)]
         public string Name { get; set; }
 
+
+        //Tabelas de Relacionamento
         public virtual ICollection<Mesh> Meshs { get; set; } = new List<Mesh>();
+        public virtual ICollection<PrintSize> PrintSizes { get; set; } = new List<PrintSize>();
 
 
         [Column(TypeName = "DateTime2")]

@@ -1,16 +1,17 @@
-﻿using SpeedSystem.Models.Enuns;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-
 
 namespace SpeedSystem.Models
 {
-    public class Mesh
+    public class PrintSize
     {
         [Key]
-        public int MeshId { get; set; }
+        public int PrintSizeId { get; set; }
 
         //Name
         [Required]
@@ -19,36 +20,32 @@ namespace SpeedSystem.Models
         [Index("Measure_Name_Index", IsUnique = true)]
         public string Name { get; set; }
 
+        //Name
+        [Required]
+        [Display(Name = "Tamanho Horizontal")]
+        public int SizeX { get; set; }
+
+        //Name
+        [Required]
+        [Display(Name = "Tamanho Horizontal")]
+        public int SizeY { get; set; }
+
+
         //Valor de Custo
         [Required]
-        [Display(Name = "Valor de Custo")]
+        [Display(Name = "Valor por peça minimo")]
         [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public float? CustValue { get; set; }
-
-        //Rendimento por Unidade de Medida
-        [Required]
-        [Display(Name = "Rendimento por medida")]
-        public float Yeild { get; set; }
-
-        //Se a malha aceita a tecnica chamada sublimação
-        [Required]
-        [Display(Name = "Aceita Sublimação")]
-        public YesOrNo Sublimation { get; set; }
+        public float? ValueSize { get; set; }
 
         [Required]
         [Display(Name = "Unidade de Medida")]
         public int MeasureId { get; set; }
 
-
-        [Required]
-        [Display(Name = "Cor da Malha")]
-        public int ColorMeshId { get; set; }
-        
-
         //Relacionamentos
         public virtual Measure Measure { get; set; }
-        public virtual ColorMesh ColorMesh { get; set; }
+
+
 
 
         //Data da criação do Item
@@ -56,5 +53,7 @@ namespace SpeedSystem.Models
         [HiddenInput(DisplayValue = false)]
         [ScaffoldColumn(false)]
         public DateTime DataCreate { get; set; }
+
+
     }
 }
