@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.UI;
 
 namespace SpeedSystem.Models
 {
@@ -32,18 +33,25 @@ namespace SpeedSystem.Models
         [DataType(DataType.ImageUrl)]
         public string Photo { get; set; }
 
+        [Display(Name = "Sexo")]
         public Genre Gnere { get; set; }
 
+        [Required]
+        [Display(Name = "Tipo de Pessoa")]
+        [Themeable(false)]
         public TypePerson TypePerson { get; set; }
 
         [Required]
         [Display(Name = "Cpf ou Cnpj")]
+        
         public string CpfOrCnpj { get; set; }
 
         [Required]
-        [Display(Name = "Data de Nascimento ou Abertura")]
+        [Display(Name = "Nascimento")]
         [DataType(DataType.Date)]
         public DateTime DateBirth { get; set; }
+
+
 
         public virtual List<Telephone> Telephones { get; set; }
         public virtual List<Address> Address { get; set; }

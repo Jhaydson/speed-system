@@ -21,6 +21,13 @@ namespace SpeedSystem.Data
 
         public System.Data.Entity.DbSet<SpeedSystem.Models.TechnicalPrint> TechnicalPrints { get; set; }
 
-        public System.Data.Entity.DbSet<SpeedSystem.Models.Client> Clients { get; set; }
+        public System.Data.Entity.DbSet<SpeedSystem.Models.Client> People { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new Models.Maps.ClientMap());
+            modelBuilder.Configurations.Add(new Models.Maps.PersonMap());
+            modelBuilder.Configurations.Add(new Models.Maps.EmployeeMap());
+        }
     }
 }

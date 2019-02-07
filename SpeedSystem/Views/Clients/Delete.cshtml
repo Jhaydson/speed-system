@@ -1,0 +1,93 @@
+﻿@model SpeedSystem.Models.Client
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col s12 center">
+                <div id="card-alert" class="card gradient-45deg-amber-amber center">
+                    <div class="card-content white-text">
+                        <p>
+                            <i class="material-icons">warning</i> Você tem certeza que costaria de excluir?
+                        </p>
+                    </div>
+                    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                            <input type="submit" value="Deletar" class="btn btn-default" />
+                        </div>
+                    }
+
+                    <table class="Highlight striped">
+                        <thead class="">
+                            <tr>
+                                <th></th>
+                                <th>Descrição</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+							                                <td>@Html.DisplayNameFor(model => model.FirstName)</td>
+                                <td>@Html.DisplayFor(model => model.FirstName)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.LastName)</td>
+                                <td>@Html.DisplayFor(model => model.LastName)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                <td>@Html.DisplayFor(model => model.Email)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.Photo)</td>
+                                <td>@Html.DisplayFor(model => model.Photo)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.Gnere)</td>
+                                <td>@Html.DisplayFor(model => model.Gnere)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.TypePerson)</td>
+                                <td>@Html.DisplayFor(model => model.TypePerson)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.CpfOrCnpj)</td>
+                                <td>@Html.DisplayFor(model => model.CpfOrCnpj)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.DateBirth)</td>
+                                <td>@Html.DisplayFor(model => model.DateBirth)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.AvailableCredit)</td>
+                                <td>@Html.DisplayFor(model => model.AvailableCredit)</td>
+								
+                            </tr>
+							                                <td>@Html.DisplayNameFor(model => model.StatusClient)</td>
+                                <td>@Html.DisplayFor(model => model.StatusClient)</td>
+								
+                            </tr>
+							
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

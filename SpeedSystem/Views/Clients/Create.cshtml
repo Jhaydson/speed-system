@@ -1,0 +1,137 @@
+﻿@model SpeedSystem.Models.Client
+
+@{
+    ViewBag.Title = "Client";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+	<div class="container">
+        <div class="section">
+            <div class="form-horizontal">
+                <div class="card-panel">
+
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.FirstName)</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.LastName)</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.Email)</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.Photo)</label>
+                        </div>
+                    </div>
+                    <label>@Html.DisplayNameFor(model => model.Gnere)</label>
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Gnere, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Gnere, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+                    <label>@Html.DisplayNameFor(model => model.TypePerson)</label>
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.TypePerson, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CpfOrCnpj, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CpfOrCnpj, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.CpfOrCnpj)</label>
+                        </div>
+                    </div>
+                    <label>@Html.DisplayNameFor(model => model.DateBirth)</label>
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateBirth, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DateBirth, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AvailableCredit, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AvailableCredit, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.AvailableCredit)</label>
+                        </div>
+                    </div>
+                    <label>@Html.DisplayNameFor(model => model.StatusClient)</label>
+                    <div class="input-field col s6">
+
+
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.StatusClient, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.StatusClient, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                            <input type="submit" value="Adicionar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+	</div>
+	</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

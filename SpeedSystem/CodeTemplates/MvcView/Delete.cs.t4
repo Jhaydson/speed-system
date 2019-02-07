@@ -90,13 +90,14 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
             continue;
         }
 #>
-                                <td>@Html.DisplayNameFor(model => model.Name)</td>
-                                <td>@Html.DisplayFor(model => model.Name)</td>
-								<#
+                                <td>@Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)</td>
+                                <td>@Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)</td>
+								
+                            </tr>
+							<#
     }
 }
 #>
-                            </tr>
 
                         </tbody>
                     </table>

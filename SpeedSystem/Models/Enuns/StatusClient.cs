@@ -8,6 +8,7 @@ namespace SpeedSystem.Models.Enuns
     public enum StatusClient
     {
         Ativo = 1,
-        Desativado = 2
+        Desativado = 2,
+        Bloqueado
     }
 }

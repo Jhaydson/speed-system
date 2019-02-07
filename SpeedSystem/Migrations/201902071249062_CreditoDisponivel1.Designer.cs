@@ -7,18 +7,18 @@ namespace SpeedSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DB5 : IMigrationMetadata
+    public sealed partial class CreditoDisponivel1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DB5));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreditoDisponivel1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902061957022_DB5"; }
+            get { return "201902071249062_CreditoDisponivel1"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

@@ -7,7 +7,7 @@ namespace SpeedSystem.Models.Enuns
 {
     public enum Genre
     {
-        M = 1,
-        F = 2
+        Masculino = 1,
+        Feminino = 2
     }
 }
