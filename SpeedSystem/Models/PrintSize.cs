@@ -27,7 +27,7 @@ namespace SpeedSystem.Models
 
         //Name
         [Required]
-        [Display(Name = "Tamanho Horizontal")]
+        [Display(Name = "Tamanho Vertical")]
         public int SizeY { get; set; }
 
 
@@ -40,12 +40,11 @@ namespace SpeedSystem.Models
 
         [Required]
         [Display(Name = "Unidade de Medida")]
+        [Range(1, int.MaxValue, ErrorMessage = "Você precisa selecionar uma opção.")]
         public int MeasureId { get; set; }
 
         //Relacionamentos
         public virtual Measure Measure { get; set; }
-
-
 
 
         //Data da criação do Item

@@ -54,7 +54,7 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                printSize.DataCreate = DateTime.Now;
+
 			try{
 
                 db.PrintSizes.Add(printSize);

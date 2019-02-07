@@ -34,6 +34,6 @@ namespace SpeedSystem.Models
         public int PersonId { get; set; }
         public virtual ICollection<Person> Person { get; set; }
 
-
+        
     }
 }

@@ -50,10 +50,12 @@ namespace SpeedSystem.Models
         [Display(Name = "Nascimento")]
         [DataType(DataType.Date)]
         public DateTime DateBirth { get; set; }
-
+                
 
 
         public virtual List<Telephone> Telephones { get; set; }
         public virtual List<Address> Address { get; set; }
+
+
     }
 }
