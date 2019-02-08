@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace SpeedSystem.Data
 {
@@ -28,6 +29,12 @@ namespace SpeedSystem.Data
             modelBuilder.Configurations.Add(new Models.Maps.ClientMap());
             modelBuilder.Configurations.Add(new Models.Maps.PersonMap());
             modelBuilder.Configurations.Add(new Models.Maps.EmployeeMap());
+
+            // DESABILITAR CASCATAS
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
+
+        
+        
     }
 }

@@ -16,7 +16,7 @@ namespace SpeedSystem.Models
         [Required]
         [Display(Name = "Nome")]
         [MaxLength(50, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
-        [Index("Measure_Name_Index", IsUnique = true)]
+        [Index("Mesh_Name_Index", IsUnique = true)]
         public string Name { get; set; }
 
         //Valor de Custo
@@ -26,11 +26,7 @@ namespace SpeedSystem.Models
         [DisplayFormat(DataFormatString = "{0:C2}")]
         public float? CustValue { get; set; }
 
-        //Rendimento por Unidade de Medida
-        [Required]
-        [Display(Name = "Rendimento por medida")]
-        public float Yeild { get; set; }
-
+       
         //Se a malha aceita a tecnica chamada sublimação
         [Required]
         [Display(Name = "Aceita Sublimação")]
@@ -38,11 +34,13 @@ namespace SpeedSystem.Models
 
         [Required]
         [Display(Name = "Unidade de Medida")]
+        [Range(1, int.MaxValue, ErrorMessage = "Você precisa selecionar uma opção.")]
         public int MeasureId { get; set; }
 
 
         [Required]
         [Display(Name = "Cor da Malha")]
+        [Range(1, int.MaxValue, ErrorMessage = "Você precisa selecionar uma opção.")]
         public int ColorMeshId { get; set; }
         
 

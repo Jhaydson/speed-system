@@ -53,6 +53,9 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
                         <p>
                             <i class="material-icons">warning</i> Você tem certeza que costaria de excluir?
                         </p>
+						<div class="card-content white-text">
+							<p> @Html.ValidationSummary(true, "")</p>
+						</div>
                     </div>
                     <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -78,8 +81,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-							<#
+						<#
 foreach (PropertyMetadata property in ModelMetadata.Properties) {
     if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
 #>
@@ -90,6 +92,8 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
             continue;
         }
 #>
+                            <tr>
+							
                                 <td>@Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)</td>
                                 <td>@Html.DisplayFor(model => model.<#= GetValueExpression(property) #>)</td>
 								

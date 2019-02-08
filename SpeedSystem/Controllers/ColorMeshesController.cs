@@ -133,8 +133,22 @@ namespace SpeedSystem.Controllers
         {
             ColorMesh colorMesh = await db.ColorMeshes.FindAsync(id);
             db.ColorMeshes.Remove(colorMesh);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            try
+            {
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            // Verificando se existe um relacionamento e nega a exclusão.
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null &&
+                        ex.InnerException.InnerException != null &&
+                        ex.InnerException.InnerException.Message.Contains("REFERENCE"))
+                {
+                    ModelState.AddModelError(string.Empty, "Não é possível remover a cor, porque existe outros relacionamentos a ela, primeiro remova as os relacionamentos  e volte a tentar!!");
+                }
+                return View(colorMesh);
+            }
         }
 
         protected override void Dispose(bool disposing)

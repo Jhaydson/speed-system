@@ -138,8 +138,21 @@ namespace SpeedSystem.Controllers
         {
             Measure measure = await db.Measures.FindAsync(id);
             db.Measures.Remove(measure);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            try
+            {
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null &&
+                        ex.InnerException.InnerException != null &&
+                        ex.InnerException.Message.Contains("REFERENCE"))
+                {
+                    ModelState.AddModelError(string.Empty, "Não é possível remover a cor, porque existe outros relacionamentos a ele, primeiro remova as os relacionamentos  e volte a tentar!!");
+                }
+                return View(measure);
+            }
         }
 
         protected override void Dispose(bool disposing)

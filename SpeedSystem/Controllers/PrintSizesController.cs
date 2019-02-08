@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using SpeedSystem.Data;
 using SpeedSystem.Models;
+using SpeedSystem.Helpers;
 
 namespace SpeedSystem.Controllers
 {
@@ -41,7 +42,7 @@ namespace SpeedSystem.Controllers
         // GET: PrintSizes/Create
         public ActionResult Create()
         {
-            ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name");
+            ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name");
             return View();
         }
 
@@ -55,21 +56,35 @@ namespace SpeedSystem.Controllers
             if (ModelState.IsValid)
             {
 
-			try{
-
-                db.PrintSizes.Add(printSize);
-                await db.SaveChangesAsync();
-			}
-				catch (System.Exception)
+                try
                 {
-                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-                    return View( printSize);
-                    throw;
+
+                    db.PrintSizes.Add(printSize);
+                    await db.SaveChangesAsync();
                 }
+
+                catch (System.Exception ex)
+                {
+
+                    if (ex.InnerException != null &&
+                                           ex.InnerException.InnerException != null &&
+                                           ex.InnerException.InnerException.Message.Contains("PrintSize_Name_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Não é possível inserir com o mesmo nome!");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+
+                    ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name", printSize.MeasureId);
+
+                    return View(printSize);
+                }
+                
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name", printSize.MeasureId);
             return View(printSize);
         }
 
@@ -98,17 +113,18 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-			try{
+                try
+                {
 
-                db.Entry(printSize).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-			}
-				catch (System.Exception)
-					{
-						ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-						return View(printSize);
-						throw;
-					}
+                    db.Entry(printSize).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (System.Exception)
+                {
+                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
+                    return View(printSize);
+                    throw;
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name", printSize.MeasureId);

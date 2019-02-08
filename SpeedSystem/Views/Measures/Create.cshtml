@@ -1,7 +1,7 @@
 ﻿@model SpeedSystem.Models.Measure
 
 @{
-    ViewBag.Title = "Measure";
+    ViewBag.Title = "Unidade de Medida";
 }
 
 
@@ -14,7 +14,14 @@
         <div class="section">
     <div class="form-horizontal">
        
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div id="card-alert" class="card orange">
+            <div class="card-content white-text">
+                <p>@Html.ValidationSummary(true, "")</p>
+            </div>
+            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
         
         <div class="input-field col s6">
 

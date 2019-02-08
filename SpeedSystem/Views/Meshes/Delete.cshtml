@@ -1,7 +1,9 @@
 ﻿@model SpeedSystem.Models.Mesh
 
 @{
-    ViewBag.Title = "Controle de Malhas";
+                /**/
+
+                ViewBag.Title = "Delete";
 }
 
 
@@ -14,6 +16,9 @@
                         <p>
                             <i class="material-icons">warning</i> Você tem certeza que costaria de excluir?
                         </p>
+                        <div class="card-content white-text">
+                            <p> @Html.ValidationSummary(true, "")</p>
+                        </div>
                     </div>
                     <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -40,19 +45,35 @@
                         </thead>
                         <tbody>
                             <tr>
-							                                <td>@Html.DisplayNameFor(model => model.Name)</td>
+
+                                <td>@Html.DisplayNameFor(model => model.ColorMesh.Color)</td>
+                                <td>@Html.DisplayFor(model => model.ColorMesh.Color)</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>@Html.DisplayNameFor(model => model.Measure.Name)</td>
+                                <td>@Html.DisplayFor(model => model.Measure.Name)</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>@Html.DisplayNameFor(model => model.Name)</td>
                                 <td>@Html.DisplayFor(model => model.Name)</td>
-								                                <td>@Html.DisplayNameFor(model => model.Name)</td>
-                                <td>@Html.DisplayFor(model => model.Name)</td>
-								                                <td>@Html.DisplayNameFor(model => model.Name)</td>
-                                <td>@Html.DisplayFor(model => model.Name)</td>
-								                                <td>@Html.DisplayNameFor(model => model.Name)</td>
-                                <td>@Html.DisplayFor(model => model.Name)</td>
-								                                <td>@Html.DisplayNameFor(model => model.Name)</td>
-                                <td>@Html.DisplayFor(model => model.Name)</td>
-								                                <td>@Html.DisplayNameFor(model => model.Name)</td>
-                                <td>@Html.DisplayFor(model => model.Name)</td>
-								                            </tr>
+
+                            </tr>
+                            <tr>
+
+                                <td>@Html.DisplayNameFor(model => model.CustValue)</td>
+                                <td>@Html.DisplayFor(model => model.CustValue)</td>
+
+                            </tr>
+                            <tr>
+
+                                <td>@Html.DisplayNameFor(model => model.Sublimation)</td>
+                                <td>@Html.DisplayFor(model => model.Sublimation)</td>
+
+                            </tr>
 
                         </tbody>
                     </table>

@@ -1481,12 +1481,10 @@
     <Content Include="Views\Measures\Edit.cshtml" />
     <Content Include="Views\Measures\Index.cshtml" />
     <Content Include="Views\ColorMeshes\Create.cshtml" />
-    <Content Include="Views\ColorMeshes\Delete.cshtml" />
     <Content Include="Views\ColorMeshes\Details.cshtml" />
     <Content Include="Views\ColorMeshes\Edit.cshtml" />
     <Content Include="Views\ColorMeshes\Index.cshtml" />
     <Content Include="Views\Meshes\Create.cshtml" />
-    <Content Include="Views\Meshes\Delete.cshtml" />
     <Content Include="Views\Meshes\Details.cshtml" />
     <Content Include="Views\Meshes\Edit.cshtml" />
     <Content Include="Views\Meshes\Index.cshtml" />
@@ -1497,14 +1495,16 @@
     <Content Include="Views\Clients\Details.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
-    <Content Include="Views\TechnicalPrints\View.cshtml" />
     <Content Include="Views\Clients\Create.cshtml" />
-    <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\PrintSizes\Create.cshtml" />
     <Content Include="Views\PrintSizes\Delete.cshtml" />
     <Content Include="Views\PrintSizes\Details.cshtml" />
     <Content Include="Views\PrintSizes\Edit.cshtml" />
     <Content Include="Views\PrintSizes\Index.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\ColorMeshes\Delete.cshtml" />
+    <Content Include="Views\TechnicalPrints\Create.cshtml" />
+    <Content Include="Views\Meshes\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

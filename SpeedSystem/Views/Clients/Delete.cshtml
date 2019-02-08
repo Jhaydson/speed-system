@@ -14,6 +14,7 @@
                         <p>
                             <i class="material-icons">warning</i> Você tem certeza que costaria de excluir?
                         </p>
+                        @Html.ValidationSummary(true, "", new { @class = "white-text" })
                     </div>
                     <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>

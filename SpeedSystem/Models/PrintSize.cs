@@ -17,7 +17,7 @@ namespace SpeedSystem.Models
         [Required]
         [Display(Name = "Nome")]
         [MaxLength(50, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
-        [Index("Measure_Name_Index", IsUnique = true)]
+        [Index("PrintSize_Name_Index", IsUnique = true)]
         public string Name { get; set; }
 
         //Name

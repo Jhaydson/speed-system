@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -40,8 +40,7 @@ namespace SpeedSystem.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
-            Telephone Residential = new Telephone();
-            return View(Residential);
+            return View();
         }
 
         // POST: Clients/Create
@@ -55,15 +54,16 @@ namespace SpeedSystem.Controllers
             {
                 client.AvailableCredit = 0;
 
-			try{
+                try
+                {
 
-                db.People.Add(client);
-                await db.SaveChangesAsync();
-			}
-				catch (System.Exception)
+                    db.People.Add(client);
+                    await db.SaveChangesAsync();
+                }
+                catch (System.Exception)
                 {
                     ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-                    return View( client);
+                    return View(client);
                     throw;
                 }
                 return RedirectToAction("Edit");
@@ -96,17 +96,18 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-			try{
+                try
+                {
 
-                db.Entry(client).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-			}
-				catch (System.Exception)
-					{
-						ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-						return View(client);
-						throw;
-					}
+                    db.Entry(client).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (System.Exception)
+                {
+                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
+                    return View(client);
+                    throw;
+                }
                 return RedirectToAction("Index");
             }
             return View(client);

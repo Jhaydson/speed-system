@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using SpeedSystem.Data;
 using SpeedSystem.Models;
+using SpeedSystem.Helpers;
 
 namespace SpeedSystem.Controllers
 {
@@ -41,8 +42,8 @@ namespace SpeedSystem.Controllers
         // GET: Meshes/Create
         public ActionResult Create()
         {
-            ViewBag.ColorMeshId = new SelectList(db.ColorMeshes, "ColorMeshId", "Color");
-            ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name");
+            ViewBag.ColorMeshId = new SelectList(CombosHelper.GetColors(), "ColorMeshId", "Color");
+            ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name");
             return View();
         }
 
@@ -61,17 +62,28 @@ namespace SpeedSystem.Controllers
                 db.Meshes.Add(mesh);
                 await db.SaveChangesAsync();
 			}
-				catch (System.Exception)
+                catch (System.Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-                    return View( mesh);
-                    throw;
+
+                    if (ex.InnerException != null &&
+                                           ex.InnerException.InnerException != null &&
+                                           ex.InnerException.InnerException.Message.Contains("Mesh_Name_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Não é possível inserir com o mesmo nome!");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+
+                    ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name", mesh.MeasureId);
+                    ViewBag.ColorMeshId = new SelectList(CombosHelper.GetColors(), "ColorMeshId", "Color", mesh.ColorMeshId);
+                    return View(mesh);
                 }
-                return RedirectToAction("Index");
             }
 
-            ViewBag.ColorMeshId = new SelectList(db.ColorMeshes, "ColorMeshId", "Color", mesh.ColorMeshId);
-            ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name", mesh.MeasureId);
+            ViewBag.ColorMeshId = new SelectList(CombosHelper.GetColors(), "ColorMeshId", "Color", mesh.ColorMeshId);
+            ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name", mesh.MeasureId);
             return View(mesh);
         }
 
@@ -87,8 +99,8 @@ namespace SpeedSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ColorMeshId = new SelectList(db.ColorMeshes, "ColorMeshId", "Color", mesh.ColorMeshId);
-            ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name", mesh.MeasureId);
+            ViewBag.ColorMeshId = new SelectList(CombosHelper.GetColors(), "ColorMeshId", "Color", mesh.ColorMeshId);
+            ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name", mesh.MeasureId);
             return View(mesh);
         }
 
@@ -106,16 +118,27 @@ namespace SpeedSystem.Controllers
                 db.Entry(mesh).State = EntityState.Modified;
                 await db.SaveChangesAsync();
 			}
-				catch (System.Exception)
-					{
-						ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-						return View(mesh);
-						throw;
-					}
-                return RedirectToAction("Index");
+                catch (System.Exception ex)
+                {
+
+                    if (ex.InnerException != null &&
+                                           ex.InnerException.InnerException != null &&
+                                           ex.InnerException.InnerException.Message.Contains("Mesh_Name_Index"))
+                    {
+                        ModelState.AddModelError(string.Empty, "Não é possível inserir com o mesmo nome!");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                    }
+
+                    ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name", mesh.MeasureId);
+                    ViewBag.ColorMeshId = new SelectList(CombosHelper.GetColors(), "ColorMeshId", "Color", mesh.ColorMeshId);
+                    return View(mesh);
+                }
             }
-            ViewBag.ColorMeshId = new SelectList(db.ColorMeshes, "ColorMeshId", "Color", mesh.ColorMeshId);
-            ViewBag.MeasureId = new SelectList(db.Measures, "MeasureId", "Name", mesh.MeasureId);
+            ViewBag.ColorMeshId = new SelectList(CombosHelper.GetColors(), "ColorMeshId", "Color", mesh.ColorMeshId);
+            ViewBag.MeasureId = new SelectList(CombosHelper.GetMeasures(), "MeasureId", "Name", mesh.MeasureId);
             return View(mesh);
         }
 

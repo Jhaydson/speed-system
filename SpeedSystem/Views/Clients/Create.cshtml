@@ -6,18 +6,23 @@
 
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-	<div class="container">
+
+    <div class="container">
         <div class="section">
             <div class="form-horizontal">
                 <div class="card-panel">
 
-
-
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div id="card-alert" class="card orange">
+                        <div class="card-content white-text">
+                            <p>@Html.ValidationSummary(true, "")</p>
+                        </div>
+                        <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
                     <div class="input-field col s6">
 
 
@@ -69,8 +74,6 @@
                     </div>
                     <label>@Html.DisplayNameFor(model => model.TypePerson)</label>
                     <div class="input-field col s6">
-
-
                         <div class="col-md-10">
                             @Html.EnumDropDownListFor(model => model.TypePerson, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "text-danger" })
@@ -127,11 +130,26 @@
                 </div>
             </div>
 
-	</div>
-	</div>
+        </div>
+    </div>
 }
 
 
 @section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#TypePerson").change(function () {
+                var select = document.getElementById('TypePerson').value;
+                if (select == 1) {
+                    jQuery("#CpfOrCnpj").mask("999.999.999-99");
+                } else if (select == 2) {
+                    jQuery("#CpfOrCnpj").mask("99.999.999/9999-99");
+                }
+            });
+        });
+    </script>
+
+    
     @Scripts.Render("~/bundles/jqueryval")
 }

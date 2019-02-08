@@ -13,8 +13,15 @@
     <div class="container">
         <div class="section">
             <div class="form-horizontal">
-
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div id="card-alert" class="card orange">
+                    <div class="card-content white-text">
+                        <p>@Html.ValidationSummary(true, "")</p>
+                    </div>
+                    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+               
                 <div class="input-field col s6">
 
 
@@ -29,21 +36,13 @@
 
 
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.CustValue, new { @class = "form-control",  @id = "currency" })
+                        @Html.TextBoxFor(model => model.CustValue, new { @class = "form-control", @id = "" })
                         @Html.ValidationMessageFor(model => model.CustValue, "", new { @class = "text-danger" })
                         <label>@Html.DisplayNameFor(model => model.CustValue)</label>
                     </div>
                 </div>
 
-                <div class="input-field col s6">
-
-
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Yeild, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Yeild, "", new { @class = "text-danger" })
-                        <label>@Html.DisplayNameFor(model => model.Yeild)</label>
-                    </div>
-                </div>
+                
                 <label>@Html.DisplayNameFor(model => model.Sublimation)</label>
                 <div class="input-field col s6">
 

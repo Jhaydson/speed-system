@@ -105,11 +105,25 @@ if (ReferenceScriptLibraries) {
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div id="card-alert" class="card orange">
+            <div class="card-content white-text">
+                <p>@Html.ValidationSummary(true, "")</p>
+            </div>
+            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
 <#        
     } else {
 #>
-        @Html.ValidationSummary(true)
+        <div id="card-alert" class="card orange">
+            <div class="card-content white-text">
+                <p>@Html.ValidationSummary(true, "")</p>
+            </div>
+            <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
 <#      
     }
 #>
