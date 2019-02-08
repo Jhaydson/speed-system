@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 using System.Web.UI;
 
 namespace SpeedSystem.Models
@@ -13,15 +15,13 @@ namespace SpeedSystem.Models
 
         //Name
         [Required]
-        [Display(Name = "Primeiro Nome")]
         [MaxLength(50, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
-        public string FirstName { get; set; }
+        public string PhysicalOrLegalName { get; set; }
 
 
         [Required]
-        [Display(Name = "Sobrenome")]
-        [MaxLength(100, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
-        public string LastName { get; set; }
+        [MaxLength(100, ErrorMessage = "O Campo {0} recebe no máximo 100 caracteres")]
+        public string LastNameOrFantasyName { get; set; }
 
         [Required]
         [Display(Name = "E-mail")]
@@ -42,20 +42,30 @@ namespace SpeedSystem.Models
         public TypePerson TypePerson { get; set; }
 
         [Required]
-        [Display(Name = "Cpf ou Cnpj")]
-        
         public string CpfOrCnpj { get; set; }
+
+        
+        public string RGOrStateRegistration { get; set; }
 
         [Required]
         [Display(Name = "Nascimento")]
         [DataType(DataType.Date)]
-        public DateTime DateBirth { get; set; }
+        public DateTime DateBirthOrOpening { get; set; }
+
                 
+        [MaxLength(100, ErrorMessage = "O Campo {0} recebe no máximo 50 caracteres")]
+        public string Responsible { get; set; }
 
 
         public virtual List<Telephone> Telephones { get; set; }
         public virtual List<Address> Address { get; set; }
 
+        
+        //Data da criação do Item
+        [Column(TypeName = "DateTime2")]
+        [HiddenInput(DisplayValue = false)]
+        [ScaffoldColumn(false)]
+        public DateTime DataCreate { get; set; }
 
     }
 }

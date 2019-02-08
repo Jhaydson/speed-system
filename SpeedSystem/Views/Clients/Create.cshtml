@@ -1,9 +1,32 @@
 ﻿@model SpeedSystem.Models.Client
 
 @{
-    ViewBag.Title = "Client";
+    ViewBag.Title = "Cadastro e Controle de Cliente";
 }
 
+
+
+
+<!--breadcrumbs start-->
+<div id="breadcrumbs-wrapper">
+    <!-- Search for small screen -->
+    <div class="header-search-wrapper grey lighten-2 hide-on-large-only">
+        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s10 m6 l6">
+                <h5 class="breadcrumbs-title">@ViewBag.Title</h5>
+                <ol class="breadcrumbs">
+                    <li><a href="#">Configurações Gerais</a></li>
+                    <li class="active">@ViewBag.Title</li>
+
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 @using (Html.BeginForm())
@@ -15,33 +38,55 @@
             <div class="form-horizontal">
                 <div class="card-panel">
 
-                    <div id="card-alert" class="card orange">
-                        <div class="card-content white-text">
-                            <p>@Html.ValidationSummary(true, "")</p>
-                        </div>
-                        <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="input-field col s6">
+                    <p>@Html.ValidationSummary(true, "")</p>
 
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <div class="col-md-10">
+                                @Html.EnumDropDownListFor(model => model.TypePerson, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "text-danger" })
 
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-                            <label>@Html.DisplayNameFor(model => model.FirstName)</label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="input-field col s6">
+                    <div class="row">
+                        <!-- Bloco PhysicalOrLegalName-->
+                        <div class="input-field col s6" id="NameFisica">
+                            @Html.EditorFor(model => model.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhysicalOrLegalName, "", new { @class = "text-danger" })
+                            <label>Nome</label>
 
-
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-                            <label>@Html.DisplayNameFor(model => model.LastName)</label>
                         </div>
+
+                        <div class="input-field col s6 hide" id="NameJuridica">
+                            @Html.EditorFor(model => model.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhysicalOrLegalName, "", new { @class = "text-danger" })
+                            <label>Pessoa Jurídica</label>
+
+                        </div>
+                        <!--/ Bloco  PhysicalOrLegalName-->
+                        <!-- Bloco  LastNameOrFantasyName-->
+                        <div class="input-field col s6" id="LastName">
+
+                            @Html.EditorFor(model => model.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastNameOrFantasyName, "", new { @class = "text-danger" })
+                            <label>Sobre Nome</label>
+
+                        </div>
+
+                        <div class="input-field col s6 hide" id="FantasyName">
+
+                            @Html.EditorFor(model => model.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LastNameOrFantasyName, "", new { @class = "text-danger" })
+                            <label>Nome Fantasia</label>
+
+                        </div>
+
+                        <!-- Bloco  LastNameOrFantasyName-->
+
                     </div>
+
 
                     <div class="input-field col s6">
 
@@ -54,7 +99,6 @@
                     </div>
 
                     <div class="input-field col s6">
-
 
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
@@ -73,13 +117,7 @@
                         </div>
                     </div>
                     <label>@Html.DisplayNameFor(model => model.TypePerson)</label>
-                    <div class="input-field col s6">
-                        <div class="col-md-10">
-                            @Html.EnumDropDownListFor(model => model.TypePerson, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "text-danger" })
 
-                        </div>
-                    </div>
 
                     <div class="input-field col s6">
 
@@ -90,13 +128,13 @@
                             <label>@Html.DisplayNameFor(model => model.CpfOrCnpj)</label>
                         </div>
                     </div>
-                    <label>@Html.DisplayNameFor(model => model.DateBirth)</label>
+                    <label>@Html.DisplayNameFor(model => model.DateBirthOrOpening)</label>
                     <div class="input-field col s6">
 
 
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateBirth, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DateBirth, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.DateBirthOrOpening, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DateBirthOrOpening, "", new { @class = "text-danger" })
 
                         </div>
                     </div>
@@ -140,16 +178,37 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#TypePerson").change(function () {
+                //Variavel que recebe valor do select
                 var select = document.getElementById('TypePerson').value;
+
                 if (select == 1) {
-                    jQuery("#CpfOrCnpj").mask("999.999.999-99");
+
+                    //PhysicalOrLegalName
+                    $('#NameFisica').addClass('show');
+                    $('#NameJuridica').addClass('hide');
+                    $('#NameFisica').removeClass('hide');
+                    ////PhysicalOrLegalName
+
+                    //PhysicalOrLegalName
+                    $('#LastName').addClass('show');
+                    $('#FantasyName').addClass('hide');
+                    $('#LastName').removeClass('hide');
+                    ////PhysicalOrLegalName
+
                 } else if (select == 2) {
-                    jQuery("#CpfOrCnpj").mask("99.999.999/9999-99");
+
+                    //PhysicalOrLegalName
+                    $('#NameFisica').addClass('hide');
+                    $('#NameJuridica').removeClass('hide');
+                     //PhysicalOrLegalName
+
+                    $('#LastName').addClass('hide');
+                    $('#FantasyName').removeClass('hide');
                 }
             });
         });
     </script>
 
-    
+
     @Scripts.Render("~/bundles/jqueryval")
 }
