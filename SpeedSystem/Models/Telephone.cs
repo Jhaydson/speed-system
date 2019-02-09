@@ -11,14 +11,13 @@ namespace SpeedSystem.Models
     public class Telephone
     {
         [Key]
-        public int MeshId { get; set; }
+        public int TelephoneId { get; set; }
 
         //Numero
         [Required]
         [Display(Name = "Numero")]
         [DataType(DataType.PhoneNumber)]
         public string Number { get; set; }
-
 
         //Tipo de Telefone
         [Required]
@@ -29,11 +28,10 @@ namespace SpeedSystem.Models
         [Required]
         [Display(Name = "Whatsapp?")]
         public YesOrNo YesOrNo { get; set; }
-        
+
         //Relacionamento
         public int PersonId { get; set; }
         public virtual ICollection<Person> Person { get; set; }
 
-        
     }
 }

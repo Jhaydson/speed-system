@@ -7,13 +7,13 @@ namespace SpeedSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AtualizandoBanco : IMigrationMetadata
+    public sealed partial class erros : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AtualizandoBanco));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(erros));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902091648525_AtualizandoBanco"; }
+            get { return "201902091928224_erros"; }
         }
         
         string IMigrationMetadata.Source

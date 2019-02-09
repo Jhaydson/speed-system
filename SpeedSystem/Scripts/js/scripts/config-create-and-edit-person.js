@@ -1,8 +1,15 @@
-﻿$(document).ready(function () {
-    $("#TypePerson").change(function () {
+﻿
+
+$(document).ready(function () {
+
+    $('#Telephones_Number').mask('(99) 99999-9999');
+
+
+
+    $("#Clients_TypePerson").change(function () {
         //Variavel que recebe valor do select
-        var select = document.getElementById('TypePerson').value;
-        alert(select);
+        var select = document.getElementById('Clients_TypePerson').value;
+
         if (select == 1) {
             //TypePerson Selecionado.
             $('#lb-tp').addClass('hide');
@@ -20,7 +27,7 @@
 
             //CPF
             $('#bc-cnpj').removeClass('hide');
-            $('#CpfOrCnpj').mask('999.999.999-99');
+            $('#Clients_CpfOrCnpj').mask('999.999.999-99');
 
             //RG
             $('#bc-inscricao').addClass('hide');
@@ -45,7 +52,7 @@
 
             //CNPJ
             $('#bc-cnpj').removeClass('hide');
-            $('#CpfOrCnpj').mask('99.999.999/9999-99');
+            $('#Clients_CpfOrCnpj').mask('99.999.999/9999-99');
 
             //Inscrição
             $('#bc-rg').removeClass('hide');
@@ -53,8 +60,13 @@
             //Responsável
             $('#bc-resp').removeClass('hide');
 
-        } else {
-
         }
+
     });
 });
+
+// Adicionando campos ao telefone
+function addTel() {
+    $('#contactp').removeClass('hide');
+
+}
