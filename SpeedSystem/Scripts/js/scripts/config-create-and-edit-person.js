@@ -44,7 +44,7 @@
             $('#Genre').addClass('hide');
 
             //CNPJ
-            $('#bc-removeClass').removeClass('hide');
+            $('#bc-cnpj').removeClass('hide');
             $('#CpfOrCnpj').mask('99.999.999/9999-99');
 
             //Inscrição

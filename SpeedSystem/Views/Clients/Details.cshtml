@@ -1,7 +1,30 @@
 ﻿@model SpeedSystem.Models.Client
 
 @{
-    ViewBag.Title = "Client";
+    ViewBag.Title = "Controle de Clientes";
+
+
+    var typeperson = Model.LastNameOrFantasyName;
+    typeperson = Convert.ToString(Model.TypePerson);
+
+    if (typeperson == "Fisica")
+    {
+        ViewBag.Name = "Nome";
+        ViewBag.LastName = "Sobre Nome";
+        ViewBag.cpf = "CPF";
+        ViewBag.rg = "RG";
+        ViewBag.date = "Data de Nascimento";
+        ViewBag.photo = "Foto de Perfil";
+    }
+    else
+    {
+        ViewBag.Name = "Nome da Empresa";
+        ViewBag.LastName = "Nome Fantasia";
+        ViewBag.cpf = "CNPJ";
+        ViewBag.rg = "Inscrição Estadual";
+        ViewBag.date = "Data de Abertura";
+        ViewBag.photo = "Logo Marca";
+    }
 }
 
 
@@ -23,54 +46,97 @@
             <table class="Highlight striped">
                 <thead class="">
                     <tr>
-                        <th></th>
+                        <th class="width-30"></th>
                         <th>Descrição</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.FirstName) </td>
-                        <td>  @Html.DisplayFor(model => model.FirstName)</td>
+
+                        <td>@ViewBag.Name</td>
+                        <td>@Html.DisplayFor(model => model.PhysicalOrLegalName)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.LastName) </td>
-                        <td>  @Html.DisplayFor(model => model.LastName)</td>
+
+                        <td>@ViewBag.LastName</td>
+                        <td>@Html.DisplayFor(model => model.LastNameOrFantasyName)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.Email) </td>
-                        <td>  @Html.DisplayFor(model => model.Email)</td>
+
+                        <td>@Html.DisplayNameFor(model => model.Email)</td>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.Photo) </td>
-                        <td>  @Html.DisplayFor(model => model.Photo)</td>
+
+                        <td>@ViewBag.Photo</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(Model.Photo))
+                            {
+                                <img src="@Url.Content(Model.Photo)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                            }
+                        </td>
+
+                    </tr>
+                    @if (typeperson == "Fisica")
+                    {
+                        <tr>
+
+                            <td>@Html.DisplayNameFor(model => model.Genre)</td>
+                            <td>@Html.DisplayFor(model => model.Genre)</td>
+
+                        </tr>
+                    }
+                    <tr>
+
+                        <td>@Html.DisplayNameFor(model => model.TypePerson)</td>
+                        <td>@Html.DisplayFor(model => model.TypePerson)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.Gnere) </td>
-                        <td>  @Html.DisplayFor(model => model.Gnere)</td>
+
+                        <td>@ViewBag.cpf</td>
+                        <td>@Html.DisplayFor(model => model.CpfOrCnpj)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.TypePerson) </td>
-                        <td>  @Html.DisplayFor(model => model.TypePerson)</td>
+
+                        <td>@ViewBag.rg</td>
+                        <td>@Html.DisplayFor(model => model.RGOrStateRegistration)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.CpfOrCnpj) </td>
-                        <td>  @Html.DisplayFor(model => model.CpfOrCnpj)</td>
+
+                        <td>@ViewBag.Date</td>
+                        <td>@Html.DisplayFor(model => model.DateBirthOrOpening)</td>
+
+                    </tr>
+                    @if (typeperson == "Juridica")
+                    {
+                        <tr>
+
+                            <td>@Html.DisplayNameFor(model => model.Responsible)</td>
+                            <td>@Html.DisplayFor(model => model.Responsible)</td>
+
+                        </tr>
+                    }
+                    <tr>
+
+                        <td>@Html.DisplayNameFor(model => model.AvailableCredit)</td>
+                        <td>@Html.DisplayFor(model => model.AvailableCredit)</td>
+
                     </tr>
                     <tr>
-                        <td> @Html.DisplayNameFor(model => model.DateBirth) </td>
-                        <td>  @Html.DisplayFor(model => model.DateBirth)</td>
+
+                        <td>@Html.DisplayNameFor(model => model.StatusClient)</td>
+                        <td>@Html.DisplayFor(model => model.StatusClient)</td>
+
                     </tr>
-                    <tr>
-                        <td> @Html.DisplayNameFor(model => model.AvailableCredit) </td>
-                        <td>  @Html.DisplayFor(model => model.AvailableCredit)</td>
-                    </tr>
-                    <tr>
-                        <td> @Html.DisplayNameFor(model => model.StatusClient) </td>
-                        <td>  @Html.DisplayFor(model => model.StatusClient)</td>
-                    </tr>
-                    /tbody>
-            </table>
+                    </tbody>
+</table>
 
         </div>
     </div>
