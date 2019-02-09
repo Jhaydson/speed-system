@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using SpeedSystem.Data;
 using SpeedSystem.Models;
+using SpeedSystem.Helpers;
 
 namespace SpeedSystem.Controllers
 {
@@ -48,15 +49,25 @@ namespace SpeedSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "PersonId,FirstName,LastName,Email,Photo,Gnere,TypePerson,CpfOrCnpj,DateBirth,AvailableCredit,StatusClient")] Client client)
+        public async Task<ActionResult> Create(Client client)
         {
             if (ModelState.IsValid)
             {
                 client.AvailableCredit = 0;
 
+                var pic = string.Empty;
+                var folder = "~/Content/PhotosPerfil";
+
+                if (client.PhotoFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(client.PhotoFile, folder);
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                client.Photo = pic;
+
                 try
                 {
-
                     db.People.Add(client);
                     await db.SaveChangesAsync();
                 }
@@ -66,7 +77,7 @@ namespace SpeedSystem.Controllers
                     return View(client);
                     throw;
                 }
-                return RedirectToAction("Edit");
+                return RedirectToAction("Index");
             }
 
             return View(client);

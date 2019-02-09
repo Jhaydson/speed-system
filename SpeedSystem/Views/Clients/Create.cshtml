@@ -29,9 +29,10 @@
 </div>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Clients", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+
 
     <div class="container">
         <div class="section">
@@ -41,46 +42,32 @@
                     <p>@Html.ValidationSummary(true, "")</p>
 
                     <div class="row">
-                        <div class="input-field col s3">
-                            <div class="col-md-10">
-                                @Html.EnumDropDownListFor(model => model.TypePerson, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "text-danger" })
-
+                        <div id="TpPerson" class=" col s4">
+                            <label id="lb-tps" class="hide">@Html.DisplayNameFor(model => model.TypePerson)</label> <br />
+                            <div class="input-field col s12" style="padding-left:0pt;">
+                                <label id="lb-tp" style="padding-left:0pt">@Html.DisplayNameFor(model => model.TypePerson)</label>
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(model => model.TypePerson, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.TypePerson, "", new { @class = "text-danger" })
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <!-- Bloco PhysicalOrLegalName-->
-                        <div class="input-field col s6" id="NameFisica">
+                        <div class="input-field col s6">
                             @Html.EditorFor(model => model.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.PhysicalOrLegalName, "", new { @class = "text-danger" })
-                            <label>Nome</label>
-
+                            <label id="namelegalp">Nome</label>
                         </div>
-
-                        <div class="input-field col s6 hide" id="NameJuridica">
-                            @Html.EditorFor(model => model.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.PhysicalOrLegalName, "", new { @class = "text-danger" })
-                            <label>Pessoa Jurídica</label>
-
-                        </div>
+                        
                         <!--/ Bloco  PhysicalOrLegalName-->
                         <!-- Bloco  LastNameOrFantasyName-->
-                        <div class="input-field col s6" id="LastName">
-
+                        <div class="input-field col s6" >
                             @Html.EditorFor(model => model.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.LastNameOrFantasyName, "", new { @class = "text-danger" })
-                            <label>Sobre Nome</label>
-
-                        </div>
-
-                        <div class="input-field col s6 hide" id="FantasyName">
-
-                            @Html.EditorFor(model => model.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.LastNameOrFantasyName, "", new { @class = "text-danger" })
-                            <label>Nome Fantasia</label>
-
+                            <label id="LastName" >Sobre Nome</label>
                         </div>
 
                         <!-- Bloco  LastNameOrFantasyName-->
@@ -88,84 +75,112 @@
                     </div>
 
 
-                    <div class="input-field col s6">
-
-
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            <label>@Html.DisplayNameFor(model => model.Email)</label>
+                    <!-- Bloco  E-mail-->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                <label>@Html.DisplayNameFor(model => model.Email)</label>
+                            </div>
                         </div>
                     </div>
+                    <!-- Bloco  E-mail-->
+                    <!-- Bloco  Genre + CprOrCnpj + RgOrState-->
 
-                    <div class="input-field col s6">
-
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
-                            <label>@Html.DisplayNameFor(model => model.Photo)</label>
+                    <div class="row">
+                        <!--Genre-->
+                        <div class="input-field col s4 hide" id="Genre">
+                            <label id="lb-genre">@Html.DisplayNameFor(model => model.Genre)</label>
+                            <div class="col-md-10">
+                                @Html.EnumDropDownListFor(model => model.Genre, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Genre, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    </div>
-                    <label>@Html.DisplayNameFor(model => model.Gnere)</label>
-                    <div class="input-field col s6">
-
-
-                        <div class="col-md-10">
-                            @Html.EnumDropDownListFor(model => model.Gnere, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Gnere, "", new { @class = "text-danger" })
-
+                        <!--Genre-->
+                        <!--Cpf ou Cnpj-->
+                        <div class="input-field col s4 hide" id="bc-cnpj">
+                            <div class="col-md-10 ">
+                                @Html.EditorFor(model => model.CpfOrCnpj, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CpfOrCnpj, "", new { @class = "text-danger" })
+                                <label id="cpfcnpj">Cpf</label>
+                            </div>
                         </div>
-                    </div>
-                    <label>@Html.DisplayNameFor(model => model.TypePerson)</label>
 
 
-                    <div class="input-field col s6">
+                        <!--RG ou Inscrição estadual-->
 
-
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.CpfOrCnpj, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.CpfOrCnpj, "", new { @class = "text-danger" })
-                            <label>@Html.DisplayNameFor(model => model.CpfOrCnpj)</label>
+                        <div class="input-field col s4 hide" id="bc-rg">
+                            <div class="col-md-10 ">
+                                @Html.EditorFor(model => model.RGOrStateRegistration, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RGOrStateRegistration, "", new { @class = "text-danger" })
+                                <label id="rgeinscricao">RG</label>
+                            </div>
                         </div>
-                    </div>
-                    <label>@Html.DisplayNameFor(model => model.DateBirthOrOpening)</label>
-                    <div class="input-field col s6">
 
-
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateBirthOrOpening, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DateBirthOrOpening, "", new { @class = "text-danger" })
-
+                        
+                        <div class="input-field col s4 hide" id="bc-resp">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Responsible, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Responsible, "", new { @class = "text-danger" })
+                                <label>Responsável</label>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="input-field col s6">
 
 
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.AvailableCredit, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.AvailableCredit, "", new { @class = "text-danger" })
-                            <label>@Html.DisplayNameFor(model => model.AvailableCredit)</label>
-                        </div>
-                    </div>
-                    <label>@Html.DisplayNameFor(model => model.StatusClient)</label>
-                    <div class="input-field col s6">
 
-
-                        <div class="col-md-10">
-                            @Html.EnumDropDownListFor(model => model.StatusClient, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.StatusClient, "", new { @class = "text-danger" })
-
-                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
-                            <input type="submit" value="Adicionar" class="btn btn-default" />
+                    <div class="row">
+                        <!--Data de Nascimento para pessoa fisica-->
+                        <div class="col s6" id="bc-nascimento">
+                            <label style="padding-left:0pt;" id="DateNacs">Data de Nascimento</label>
+                            <div class="input-field col s12" style="padding-left:0pt;">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DateBirthOrOpening, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DateBirthOrOpening, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!--Status do client-->
+                        <div class="col s6">
+                            <label>@Html.DisplayNameFor(model => model.StatusClient)</label>
+                            <div class="input-field col s12">
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(model => model.StatusClient, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.StatusClient, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="card-panel">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Foto de Perfil</span>
+                            <input type="file">
+                            @Html.TextBoxFor(model => model.PhotoFile, new { type = "file", htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+
                         </div>
                     </div>
                 </div>
+               
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                        <input type="submit" value="Adicionar" class="btn btn-default" />
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -175,39 +190,7 @@
 
 @section Scripts {
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#TypePerson").change(function () {
-                //Variavel que recebe valor do select
-                var select = document.getElementById('TypePerson').value;
-
-                if (select == 1) {
-
-                    //PhysicalOrLegalName
-                    $('#NameFisica').addClass('show');
-                    $('#NameJuridica').addClass('hide');
-                    $('#NameFisica').removeClass('hide');
-                    ////PhysicalOrLegalName
-
-                    //PhysicalOrLegalName
-                    $('#LastName').addClass('show');
-                    $('#FantasyName').addClass('hide');
-                    $('#LastName').removeClass('hide');
-                    ////PhysicalOrLegalName
-
-                } else if (select == 2) {
-
-                    //PhysicalOrLegalName
-                    $('#NameFisica').addClass('hide');
-                    $('#NameJuridica').removeClass('hide');
-                     //PhysicalOrLegalName
-
-                    $('#LastName').addClass('hide');
-                    $('#FantasyName').removeClass('hide');
-                }
-            });
-        });
-    </script>
+    <script src="~/Scripts/js/scripts/config-create-and-edit-person.js" type="text/javascript"></script>
 
 
     @Scripts.Render("~/bundles/jqueryval")

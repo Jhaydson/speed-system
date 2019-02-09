@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 
@@ -33,12 +34,16 @@ namespace SpeedSystem.Models
         [DataType(DataType.ImageUrl)]
         public string Photo { get; set; }
 
+        [NotMapped]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
         [Display(Name = "Sexo")]
-        public Genre Gnere { get; set; }
+        public Genre Genre { get; set; }
 
         [Required]
         [Display(Name = "Tipo de Pessoa")]
         [Themeable(false)]
+        [Range (1,2, ErrorMessage = "Selecione o tipo de pessoa")]
         public TypePerson TypePerson { get; set; }
 
         [Required]

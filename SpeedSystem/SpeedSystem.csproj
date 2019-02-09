@@ -201,21 +201,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CombosHelper.cs" />
+    <Compile Include="Helpers\FilesHelper.cs" />
     <Compile Include="Migrations\201902041909178_Att.cs" />
     <Compile Include="Migrations\201902041909178_Att.Designer.cs">
       <DependentUpon>201902041909178_Att.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902071245454_CreditoDisponivel.cs" />
-    <Compile Include="Migrations\201902071245454_CreditoDisponivel.Designer.cs">
-      <DependentUpon>201902071245454_CreditoDisponivel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902071249062_CreditoDisponivel1.cs" />
-    <Compile Include="Migrations\201902071249062_CreditoDisponivel1.Designer.cs">
-      <DependentUpon>201902071249062_CreditoDisponivel1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902081853062_AtualizacaoPerson.cs" />
-    <Compile Include="Migrations\201902081853062_AtualizacaoPerson.Designer.cs">
-      <DependentUpon>201902081853062_AtualizacaoPerson.cs</DependentUpon>
+    <Compile Include="Migrations\201902091648525_AtualizandoBanco.cs" />
+    <Compile Include="Migrations\201902091648525_AtualizandoBanco.Designer.cs">
+      <DependentUpon>201902091648525_AtualizandoBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -388,6 +381,7 @@
     <Content Include="Scripts\js\scripts\charts-morris.js" />
     <Content Include="Scripts\js\scripts\charts-sparklines.js" />
     <Content Include="Scripts\js\scripts\charts-xcharts.js" />
+    <Content Include="Scripts\js\scripts\config-create-and-edit-person.js" />
     <Content Include="Scripts\js\scripts\css-animation.js" />
     <Content Include="Scripts\js\scripts\css-transition.js" />
     <Content Include="Scripts\js\scripts\dashboard-analytics.js" />
@@ -1063,13 +1057,14 @@
     <Content Include="Views\PrintSizes\Details.cshtml" />
     <Content Include="Views\PrintSizes\Edit.cshtml" />
     <Content Include="Views\PrintSizes\Index.cshtml" />
-    <Content Include="Views\Clients\Delete.cshtml" />
     <Content Include="Views\ColorMeshes\Delete.cshtml" />
     <Content Include="Views\TechnicalPrints\Create.cshtml" />
     <Content Include="Views\Meshes\Delete.cshtml" />
+    <Content Include="Views\Clients\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\PhotosPerfil\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -1088,14 +1083,8 @@
     <EmbeddedResource Include="Migrations\201902041909178_Att.resx">
       <DependentUpon>201902041909178_Att.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071245454_CreditoDisponivel.resx">
-      <DependentUpon>201902071245454_CreditoDisponivel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902071249062_CreditoDisponivel1.resx">
-      <DependentUpon>201902071249062_CreditoDisponivel1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902081853062_AtualizacaoPerson.resx">
-      <DependentUpon>201902081853062_AtualizacaoPerson.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902091648525_AtualizandoBanco.resx">
+      <DependentUpon>201902091648525_AtualizandoBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

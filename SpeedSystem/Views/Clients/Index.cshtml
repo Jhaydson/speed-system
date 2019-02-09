@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<SpeedSystem.Models.Client>
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Controle de Clientes";
+    ViewBag.Title = "Controle de Clientes";
 }
 
 
@@ -48,19 +48,18 @@
                     <table class="reponsive-table display striped highlight" cellpadding="0">
                         <tr>
                             <th>
-                                Nome completo
+                                @Html.DisplayNameFor(model => model.Photo)
+                            </th>
+                            <th>
+                                Nome
                             </th>
 
                             <th>
                                 @Html.DisplayNameFor(model => model.Email)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Photo)
-                            </th>
-
 
                             <th>
-                                @Html.DisplayNameFor(model => model.CpfOrCnpj)
+                                Cpf ou Cnpj
                             </th>
 
                             <th>
@@ -74,36 +73,40 @@
 
                         @foreach (var item in Model)
                         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
-                </td>
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.Photo))
+                                    {
+                                        <img src="@Url.Content(item.Photo)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhysicalOrLegalName) @Html.DisplayFor(modelItem => item.LastNameOrFantasyName)
+                                </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Photo)
-                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.CpfOrCnpj)
-                </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.AvailableCredit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StatusClient)
-                </td>
-                <td>
-                    <a class="btn-floating #757575 grey darken-1" href="@Url.Action("Edit",  new { id = item.PersonId })"><i class="material-icons">mode_edit</i></a> |
-                    <a class="btn-floating #1976d2 blue darken-2" href="@Url.Action("Details", new { id = item.PersonId })"><i class="material-icons">remove_red_eye</i></a> |
-                    <a class="btn-floating #e53935 red darken-1" href="@Url.Action("Delete",  new { id = item.PersonId })"><i class="material-icons">delete</i></a>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CpfOrCnpj)
+                                </td>
 
-                </td>
-            </tr>
-        }
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AvailableCredit)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatusClient)
+                                </td>
+                                <td>
+                                    <a class="btn-floating #757575 grey darken-1" href="@Url.Action("Edit",  new { id = item.PersonId })"><i class="material-icons">mode_edit</i></a> |
+                                    <a class="btn-floating #1976d2 blue darken-2" href="@Url.Action("Details", new { id = item.PersonId })"><i class="material-icons">remove_red_eye</i></a> |
+                                    <a class="btn-floating #e53935 red darken-1" href="@Url.Action("Delete",  new { id = item.PersonId })"><i class="material-icons">delete</i></a>
+
+                                </td>
+                            </tr>
+                        }
 
                     </table>
                 </div>
