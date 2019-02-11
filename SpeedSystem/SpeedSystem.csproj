@@ -1062,6 +1062,8 @@
     <Content Include="Views\TechnicalPrints\Create.cshtml" />
     <Content Include="Views\Meshes\Delete.cshtml" />
     <Content Include="Views\Clients\Delete.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TypeTelephone.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\YesOrNo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

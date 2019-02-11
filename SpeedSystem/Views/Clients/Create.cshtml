@@ -5,8 +5,6 @@
 }
 
 
-
-
 <!--breadcrumbs start-->
 <div id="breadcrumbs-wrapper">
     <!-- Search for small screen -->
@@ -160,29 +158,35 @@
 
                     <div class="row hide" id="contactp">
 
-                        <div class="input-field col s3">
+                        <div class="col s2">
                             <div class="col-md-10">
-                                
-                                @foreach (var value in Enum.GetValues(typeof(SpeedSystem.Models.Enuns.TypeTelephone)))
-                                {
-                                    @Html.RadioButtonFor(model => model.Telephones.TypeTelephone, "", new { @class = "with-gap" })
-                                    @Html.Label(value.ToString())
-                                }
-                                @Html.ValidationMessageFor(model => model.Telephones.TypeTelephone, "", new { @class = "text-danger" })
-
+                                @Html.EditorFor(m => m.Telephones.TypeTelephone)
                             </div>
                         </div>
 
-
                         <div class="input-field col s3">
-                            @Html.EditorFor(model => model.Telephones.Number, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Telephones.Number, new { htmlAttributes = new { @class = "form-control"} })
                             @Html.ValidationMessageFor(model => model.Telephones.Number, "", new { @class = "text-danger" })
                             <label id="namelegalp">Número</label>
+                        </div>
+                        <div class="col s2">
+                            <div class="col-md-10">
+                                @Html.EditorFor(m => m.Telephones.YesOrNo)
+                                Whatsapp?
+                            </div>
+                        </div>
+                        <div class="col s1">
+                            <div class="col-md-10">
+                                <div class="btn #d32f2f red darken-2" onclick="removerCampos()">
+                                    Remover telefone
+                                    <i class="material-icons right">add</i>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
 
-                    <div class="row" id="contact">
+                    <div id="contactdest">
 
                     </div>
 

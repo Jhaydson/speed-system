@@ -8,6 +8,7 @@ $(document).ready(function () {
 
     $("#Clients_TypePerson").change(function () {
         //Variavel que recebe valor do select
+
         var select = document.getElementById('Clients_TypePerson').value;
 
         if (select == 1) {
@@ -66,7 +67,25 @@ $(document).ready(function () {
 });
 
 // Adicionando campos ao telefone
-function addTel() {
-    $('#contactp').removeClass('hide');
 
-}
+
+function addTel() {
+
+    $('#contactp').removeClass('hide');
+   
+    var clone = document.getElementById('contactp').cloneNode(true);
+    var destino = document.getElementById('contactdest');
+
+    destino.appendChild(clone);
+
+    var camposClonados = clone.getElementsByTagName('input');
+
+    for (i = 0; i < camposClonados.length; i++) {
+        camposClonados[i].value = '';
+    }
+};
+function removerCampos(id) {
+    var node1 = document.getElementById('contactdest');
+    node1.removeChild(node1.childNodes[0]);
+};
+
