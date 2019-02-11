@@ -28,214 +28,205 @@
 
 
 
-@using (Html.BeginForm("Create", "Clients", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
 
-    <div class="container">
-        <div class="section">
-            <div class="form-horizontal">
-                <div class="card-panel">
+<div class="container">
+    <div class="section">
+        <div class="form-horizontal">
+            <div class="card-panel">
 
-                    <p>@Html.ValidationSummary(true, "")</p>
+                <p>@Html.ValidationSummary(true, "")</p>
 
-                    <div class="row">
-                        <div id="TpPerson" class=" col s4">
-                            <label id="lb-tps" class="hide">@Html.DisplayNameFor(model => model.Clients.TypePerson)</label> <br />
-                            <div class="input-field col s12" style="padding-left:0pt;">
-                                <label id="lb-tp" style="padding-left:0pt">@Html.DisplayNameFor(model => model.Clients.TypePerson)</label>
-                                <div class="col-md-10">
-                                    @Html.EnumDropDownListFor(model => model.Clients.TypePerson, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Clients.TypePerson, "", new { @class = "text-danger" })
-                                </div>
+                <div class="row">
+                    <div id="TpPerson" class=" col s4">
+                        <label id="lb-tps" class="hide">@Html.DisplayNameFor(model => model.Clients.TypePerson)</label> <br />
+                        <div class="input-field col s12" style="padding-left:0pt;">
+                            <label id="lb-tp" style="padding-left:0pt">@Html.DisplayNameFor(model => model.Clients.TypePerson)</label>
+                            <div class="col-md-10">
+                                @Html.EnumDropDownListFor(model => model.Clients.TypePerson, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Clients.TypePerson, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Bloco PhysicalOrLegalName-->
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Clients.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clients.PhysicalOrLegalName, "", new { @class = "text-danger" })
+                        <label id="namelegalp">Nome</label>
+                    </div>
+
+                    <!--/ Bloco  PhysicalOrLegalName-->
+                    <!-- Bloco  LastNameOrFantasyName-->
+                    <div class="input-field col s6">
+                        @Html.EditorFor(model => model.Clients.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Clients.LastNameOrFantasyName, "", new { @class = "text-danger" })
+                        <label id="LastName">Sobre Nome</label>
+                    </div>
+
+                    <!-- Bloco  LastNameOrFantasyName-->
+
+                </div>
+
+
+                <!-- Bloco  E-mail-->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Clients.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Clients.Email, "", new { @class = "text-danger" })
+                            <label>@Html.DisplayNameFor(model => model.Clients.Email)</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bloco  E-mail-->
+                <!-- Bloco  Genre + CprOrCnpj + RgOrState-->
+
+                <div class="row">
+                    <!--Genre-->
+                    <div class="input-field col s4 hide" id="Genre">
+                        <label id="lb-genre">@Html.DisplayNameFor(model => model.Clients.Genre)</label>
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Clients.Genre, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Clients.Genre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <!--Genre-->
+                    <!--Cpf ou Cnpj-->
+                    <div class="input-field col s4 hide" id="bc-cnpj">
+                        <div class="col-md-10 ">
+                            @Html.EditorFor(model => model.Clients.CpfOrCnpj, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Clients.CpfOrCnpj, "", new { @class = "text-danger" })
+                            <label id="cpfcnpj">Cpf</label>
+                        </div>
+                    </div>
+
+
+                    <!--RG ou Inscrição estadual-->
+
+                    <div class="input-field col s4 hide" id="bc-rg">
+                        <div class="col-md-10 ">
+                            @Html.EditorFor(model => model.Clients.RGOrStateRegistration, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Clients.RGOrStateRegistration, "", new { @class = "text-danger" })
+                            <label id="rgeinscricao">RG</label>
+                        </div>
+                    </div>
+
+
+                    <div class="input-field col s4 hide" id="bc-resp">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Clients.Responsible, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Clients.Responsible, "", new { @class = "text-danger" })
+                            <label>Responsável</label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+                    <!--Data de Nascimento para pessoa fisica-->
+                    <div class="col s6" id="bc-nascimento">
+                        <label style="padding-left:0pt;" id="DateNacs">Data de Nascimento</label>
+                        <div class="input-field col s12" style="padding-left:0pt;">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Clients.DateBirthOrOpening, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Clients.DateBirthOrOpening, "", new { @class = "text-danger" })
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <!-- Bloco PhysicalOrLegalName-->
-                        <div class="input-field col s6">
-                            @Html.EditorFor(model => model.Clients.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Clients.PhysicalOrLegalName, "", new { @class = "text-danger" })
-                            <label id="namelegalp">Nome</label>
-                        </div>
-
-                        <!--/ Bloco  PhysicalOrLegalName-->
-                        <!-- Bloco  LastNameOrFantasyName-->
-                        <div class="input-field col s6">
-                            @Html.EditorFor(model => model.Clients.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Clients.LastNameOrFantasyName, "", new { @class = "text-danger" })
-                            <label id="LastName">Sobre Nome</label>
-                        </div>
-
-                        <!-- Bloco  LastNameOrFantasyName-->
-
-                    </div>
-
-
-                    <!-- Bloco  E-mail-->
-                    <div class="row">
+                    <!--Status do client-->
+                    <div class="col s6">
+                        <label>@Html.DisplayNameFor(model => model.Clients.StatusClient)</label>
                         <div class="input-field col s12">
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.Clients.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Clients.Email, "", new { @class = "text-danger" })
-                                <label>@Html.DisplayNameFor(model => model.Clients.Email)</label>
+                                @Html.EnumDropDownListFor(model => model.Clients.StatusClient, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Clients.StatusClient, "", new { @class = "text-danger" })
+
                             </div>
                         </div>
                     </div>
-                    <!-- Bloco  E-mail-->
-                    <!-- Bloco  Genre + CprOrCnpj + RgOrState-->
-
-                    <div class="row">
-                        <!--Genre-->
-                        <div class="input-field col s4 hide" id="Genre">
-                            <label id="lb-genre">@Html.DisplayNameFor(model => model.Clients.Genre)</label>
-                            <div class="col-md-10">
-                                @Html.EnumDropDownListFor(model => model.Clients.Genre, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Clients.Genre, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <!--Genre-->
-                        <!--Cpf ou Cnpj-->
-                        <div class="input-field col s4 hide" id="bc-cnpj">
-                            <div class="col-md-10 ">
-                                @Html.EditorFor(model => model.Clients.CpfOrCnpj, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Clients.CpfOrCnpj, "", new { @class = "text-danger" })
-                                <label id="cpfcnpj">Cpf</label>
-                            </div>
-                        </div>
-
-
-                        <!--RG ou Inscrição estadual-->
-
-                        <div class="input-field col s4 hide" id="bc-rg">
-                            <div class="col-md-10 ">
-                                @Html.EditorFor(model => model.Clients.RGOrStateRegistration, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Clients.RGOrStateRegistration, "", new { @class = "text-danger" })
-                                <label id="rgeinscricao">RG</label>
-                            </div>
-                        </div>
-
-
-                        <div class="input-field col s4 hide" id="bc-resp">
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Clients.Responsible, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Clients.Responsible, "", new { @class = "text-danger" })
-                                <label>Responsável</label>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="row">
-                        <!--Data de Nascimento para pessoa fisica-->
-                        <div class="col s6" id="bc-nascimento">
-                            <label style="padding-left:0pt;" id="DateNacs">Data de Nascimento</label>
-                            <div class="input-field col s12" style="padding-left:0pt;">
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Clients.DateBirthOrOpening, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Clients.DateBirthOrOpening, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--Status do client-->
-                        <div class="col s6">
-                            <label>@Html.DisplayNameFor(model => model.Clients.StatusClient)</label>
-                            <div class="input-field col s12">
-                                <div class="col-md-10">
-                                    @Html.EnumDropDownListFor(model => model.Clients.StatusClient, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Clients.StatusClient, "", new { @class = "text-danger" })
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row hide" id="contactp">
-
-                        <div class="col s2">
-                            <div class="col-md-10">
-                                @Html.EditorFor(m => m.Telephones.TypeTelephone)
-                            </div>
-                        </div>
-
-                        <div class="input-field col s3">
-                            @Html.EditorFor(model => model.Telephones.Number, new { htmlAttributes = new { @class = "form-control"} })
-                            @Html.ValidationMessageFor(model => model.Telephones.Number, "", new { @class = "text-danger" })
-                            <label id="namelegalp">Número</label>
-                        </div>
-                        <div class="col s2">
-                            <div class="col-md-10">
-                                @Html.EditorFor(m => m.Telephones.YesOrNo)
-                                Whatsapp?
-                            </div>
-                        </div>
-                        <div class="col s1">
-                            <div class="col-md-10">
-                                <div class="btn #d32f2f red darken-2" onclick="removerCampos()">
-                                    Remover telefone
-                                    <i class="material-icons right">add</i>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div id="contactdest">
-
-                    </div>
-
-                    <div class="row">
-                        <div class="btn #1976d2 blue darken-2" onclick="addTel()">
-                            Adicionar Novo Telefone
-                            <i class="material-icons right">add</i>
-                        </div>
-
-                    </div>
-
-
-
-
 
                 </div>
-                <div class="card-panel">
-                    <div class="file-field input-field">
-                        <div class="btn #1976d2 blue darken-2">
-                            <span>Foto de Perfil</span>
-                            <input type="file">
-                            @Html.TextBoxFor(model => model.Clients.PhotoFile, new { type = "file", htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
 
-                        </div>
+                <div class="file-field input-field">
+                    <div class="btn #1976d2 blue darken-2">
+                        <span>Foto de Perfil</span>
+                        <input type="file">
+                        @Html.TextBoxFor(model => model.Clients.PhotoFile, new { type = "file", htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
                     </div>
                 </div>
 
-                <div class="card-panel">
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
-                            <input type="submit" value="Adicionar" class="btn btn-default" />
-                        </div>
+                <div class="row ">
+                    <div class=" col s10">
                     </div>
+                    <div class="btn btn-default col s2" onclick="SaveClient();">
+                        Criar Cliente
+                        <i class="material-icons right">saved</i>
+                    </div>
+
                 </div>
             </div>
 
+
+            <div class="card-panel">
+                <div class="row hide" id="contact">
+                    <div class="col s2">
+                        <div class="col-md-10">
+                            @Html.EditorFor(m => m.Telephones.TypeTelephone)
+                        </div>
+                    </div>
+
+                    <div class="input-field col s3">
+                        @Html.EditorFor(model => model.Telephones.Number, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telephones.Number, "", new { @class = "text-danger" })
+                        <label id="namelegalp">Número</label>
+                    </div>
+                    <div class="col s2">
+                        <div class="col-md-10">
+                            @Html.EditorFor(m => m.Telephones.YesOrNo)
+                            Whatsapp?
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="btn #1976d2 blue darken-2" onclick="">
+                        Adicionar Novo Telefone
+                        <i class="material-icons right">add</i>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="card-panel">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
+                        <input type="submit" value="Adicionar" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
-}
+</div>
 
 
 @section Scripts {
 
-    <script src="~/Scripts/js/scripts/config-create-and-edit-person.js" type="text/javascript"></script>
-
-
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/js/scripts/config-create-and-edit-person.js" type="text/javascript"></script>
 }

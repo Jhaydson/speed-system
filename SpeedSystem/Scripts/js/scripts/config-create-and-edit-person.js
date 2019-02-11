@@ -1,6 +1,4 @@
-﻿
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     $('#Telephones_Number').mask('(99) 99999-9999');
 
@@ -66,26 +64,56 @@ $(document).ready(function () {
     });
 });
 
-// Adicionando campos ao telefone
 
+function SaveClient() {
+    debugger;
 
-function addTel() {
+    var Clients_TypePerson = $("Clients_TypePerson").val();
+    var Clients_PhysicalOrLegalName = $("Clients_PhysicalOrLegalName").val();
+    var Clients_LastNameOrFantasyName = $("Clients_LastNameOrFantasyName").val();
+    var Clients_Email = $("Clients_Email").val();
+    var Clients_Genre = $("Clients_Genre").val();
+    var Clients_CpfOrCnpj = $("Clients_CpfOrCnpj").val();
+    var Clients_Responsible = $("Clients_Responsible").val();
+    var Clients_DateBirthOrOpening = $("Clients_DateBirthOrOpening").val();
+    var Clients_StatusClient = $("Clients_StatusClient").val();
+    var Clients_PhotoFile = $("Clients_PhotoFile").val();
 
-    $('#contactp').removeClass('hide');
-   
-    var clone = document.getElementById('contactp').cloneNode(true);
-    var destino = document.getElementById('contactdest');
+    var token = $('input [name="__RequestVerificationToken"]').val();
+    var tokenadr = $('form[action="/Clients/Create"] input [name="__RequestVerificationToken"]').val();
+    var headers = {};
+    var headersadr = {};
+    headers = ["__RequestVerificationToken"] = token;
+    headersadr = ['__RequestVerificationToken'] = tokenadr;
 
-    destino.appendChild(clone);
+    //Gravar 
+    var url = "/Clients/Create";
 
-    var camposClonados = clone.getElementsByTagName('input');
+    $.ajax({
+        url: url
+        , type: "POST"
+        , dataType: "json"
+        , headers: headersadr
+        , data: {
+            Clients_PersonId: 0,
+            Clients_TypePerson: Clients_TypePerson,
+            Clients_PhysicalOrLegalName: Clients_PhysicalOrLegalName,
+            Clients_LastNameOrFantasyName: Clients_LastNameOrFantasyName,
+            Clients_Email: Clients_Email,
+            Clients_Genre: Clients_Genre,
+            Clients_CpfOrCnpj: Clients_CpfOrCnpj,
+            Clients_Responsible: Clients_Responsible,
+            Clients_DateBirthOrOpening: Clients_DateBirthOrOpening,
+            Clients_StatusClient: Clients_StatusClient,
+            Clients_PhotoFile: Clients_PhotoFile,
+            __RequestVerificationToken: token
+        }
+        , sucess: function (data) {
+            if (data.ResultClient) {
+                debugger;
+            }
+        }
 
-    for (i = 0; i < camposClonados.length; i++) {
-        camposClonados[i].value = '';
     }
+    );
 };
-function removerCampos(id) {
-    var node1 = document.getElementById('contactdest');
-    node1.removeChild(node1.childNodes[0]);
-};
-

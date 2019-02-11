@@ -83,10 +83,10 @@ namespace SpeedSystem.Controllers
                     return View(client);
                     throw;
                 }
-                return RedirectToAction("Index");
+               
             }
 
-            return View(client);
+            return Json(new {resultClient = client.Clients.PersonId}, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Clients/Edit/5
