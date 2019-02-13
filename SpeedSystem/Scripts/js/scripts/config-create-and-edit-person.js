@@ -1,9 +1,8 @@
 ﻿$(document).ready(function () {
 
-    $('#Telephones_Number').mask('(99) 99999-9999');
-
-
-
+    $('#Telephones_0__Number').mask('(99) 99999-9999');
+    $('#Telephones_1__Number').mask('(99) 99999-9999');
+       
     $("#Clients_TypePerson").change(function () {
         //Variavel que recebe valor do select
 
@@ -64,6 +63,10 @@
     });
 });
 
+function AddTel() {
+    $('#contact2').removeClass('hide');
+    $('#bt-addTel').addClass('hide');
+}
 
 function SaveClient() {
     debugger;

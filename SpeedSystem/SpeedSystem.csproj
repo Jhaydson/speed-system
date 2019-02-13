@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201902091928224_erros.Designer.cs">
       <DependentUpon>201902091928224_erros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902131849088_AtualizadoTel.cs" />
+    <Compile Include="Migrations\201902131849088_AtualizadoTel.Designer.cs">
+      <DependentUpon>201902131849088_AtualizadoTel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1088,6 +1092,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902091928224_erros.resx">
       <DependentUpon>201902091928224_erros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902131849088_AtualizadoTel.resx">
+      <DependentUpon>201902131849088_AtualizadoTel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

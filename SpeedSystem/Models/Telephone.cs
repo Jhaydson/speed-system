@@ -31,7 +31,7 @@ namespace SpeedSystem.Models
 
         //Relacionamento
         public int PersonId { get; set; }
-        public virtual ICollection<Person> Person { get; set; }
+        public virtual Person Person { get; set; }
 
     }
 }
