@@ -20,12 +20,12 @@ namespace SpeedSystem.Models
         public string Number { get; set; }
 
         //Tipo de Telefone
-        [Required]
+      
         [Display(Name = "Tipo de Telefone")]
         public TypeTelephone TypeTelephone { get; set; }
 
         //Se é Whatsapp
-        [Required]
+        
         [Display(Name = "Whatsapp?")]
         public YesOrNo YesOrNo { get; set; }
 

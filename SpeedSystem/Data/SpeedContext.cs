@@ -24,6 +24,8 @@ namespace SpeedSystem.Data
 
         public System.Data.Entity.DbSet<SpeedSystem.Models.Client> People { get; set; }
 
+        public System.Data.Entity.DbSet<SpeedSystem.Models.Telephone> Telephones { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new Models.Maps.ClientMap());

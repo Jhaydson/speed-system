@@ -68,23 +68,23 @@
 function SaveClient() {
     debugger;
 
-    var Clients_TypePerson = $("Clients_TypePerson").val();
-    var Clients_PhysicalOrLegalName = $("Clients_PhysicalOrLegalName").val();
-    var Clients_LastNameOrFantasyName = $("Clients_LastNameOrFantasyName").val();
-    var Clients_Email = $("Clients_Email").val();
-    var Clients_Genre = $("Clients_Genre").val();
-    var Clients_CpfOrCnpj = $("Clients_CpfOrCnpj").val();
-    var Clients_Responsible = $("Clients_Responsible").val();
-    var Clients_DateBirthOrOpening = $("Clients_DateBirthOrOpening").val();
-    var Clients_StatusClient = $("Clients_StatusClient").val();
-    var Clients_PhotoFile = $("Clients_PhotoFile").val();
+    var Clients_TypePerson = $('#Clients_TypePerson').val();
+    var Clients_PhysicalOrLegalName = document.getElementById('Clients_PhysicalOrLegalName').value;
+    var Clients_LastNameOrFantasyName = document.getElementById('Clients_LastNameOrFantasyName').value;
+    var Clients_Email = document.getElementById('Clients_Email').value;
+    var Clients_Genre = document.getElementById('Clients_Genre').value;
+    var Clients_CpfOrCnpj = document.getElementById('Clients_CpfOrCnpj').value;
+    var Clients_Responsible = document.getElementById('Clients_Responsible').value;
+    var Clients_DateBirthOrOpening = document.getElementById('Clients_DateBirthOrOpening').value;
+    var Clients_StatusClient = document.getElementById('Clients_StatusClient').value;
+    //var Clients_PhotoFile = $document.getElementById('Clients_PhotoFile').value;
 
-    var token = $('input [name="__RequestVerificationToken"]').val();
-    var tokenadr = $('form[action="/Clients/Create"] input [name="__RequestVerificationToken"]').val();
+    var token = $('input[name="__RequestVerificationToken"]').val();
+    var tokenadr = $('form[action="/Clients/Create"] input[name="__RequestVerificationToken"]').val();
     var headers = {};
     var headersadr = {};
-    headers = ["__RequestVerificationToken"] = token;
-    headersadr = ['__RequestVerificationToken'] = tokenadr;
+    headers['__RequestVerificationToken'] = token;
+    headersadr['__RequestVerificationToken'] = tokenadr;
 
     //Gravar 
     var url = "/Clients/Create";
@@ -94,7 +94,7 @@ function SaveClient() {
         , type: "POST"
         , dataType: "json"
         , headers: headersadr
-        , data: {
+        , data: ({
             Clients_PersonId: 0,
             Clients_TypePerson: Clients_TypePerson,
             Clients_PhysicalOrLegalName: Clients_PhysicalOrLegalName,
@@ -105,9 +105,9 @@ function SaveClient() {
             Clients_Responsible: Clients_Responsible,
             Clients_DateBirthOrOpening: Clients_DateBirthOrOpening,
             Clients_StatusClient: Clients_StatusClient,
-            Clients_PhotoFile: Clients_PhotoFile,
+           // Clients_PhotoFile: Clients_PhotoFile,
             __RequestVerificationToken: token
-        }
+        })
         , sucess: function (data) {
             if (data.ResultClient) {
                 debugger;

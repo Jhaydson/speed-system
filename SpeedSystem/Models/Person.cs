@@ -62,8 +62,8 @@ namespace SpeedSystem.Models
         public string Responsible { get; set; }
 
 
-        public virtual List<Telephone> Telephones { get; set; }
-        public virtual List<Address> Address { get; set; }
+        public virtual ICollection<Telephone> Telephones { get; set; }
+        public virtual ICollection<Address> Address { get; set; }
 
         
         //Data da criação do Item

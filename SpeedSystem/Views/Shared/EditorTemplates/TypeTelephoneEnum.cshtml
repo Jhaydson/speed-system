@@ -1,0 +1,12 @@
+﻿@model SpeedSystem.Models.ViewModels.ClientViewModel
+
+@foreach (var value in Enum.GetValues(typeof(SpeedSystem.Models.Enuns.TypeTelephone)))
+{
+    var id = TagBuilder.CreateSanitizedId(string.Format(
+        "{0}_{1}", ViewData.TemplateInfo.HtmlFieldPrefix, value));
+    <div>
+        @Html.RadioButton(string.Empty, value, new { id })
+        @Html.Label(value.ToString(), new { @for = id })
+    </div>
+
+}

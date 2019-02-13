@@ -42,10 +42,10 @@ namespace SpeedSystem.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
+            //Inicio minha cliente View Model
             ClientViewModel model = new ClientViewModel();
             model.Clients = new Client();
-            model.Telephones = new Telephone();
-            model.Address = new Address();
+
 
             return View(model);
         }
@@ -59,17 +59,17 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                client.Clients.AvailableCredit = 0;
-
+                /**
+                 * Tratando fotografia, pego o arquivo que vem em photoFile, 
+                 * faço o upload, a após pego o endereco de armazenamento.
+                 */
                 var pic = string.Empty;
                 var folder = "~/Content/PhotosPerfil";
-
                 if (client.Clients.PhotoFile != null)
                 {
                     pic = FilesHelper.UploadPhoto(client.Clients.PhotoFile, folder);
                     pic = string.Format("{0}/{1}", folder, pic);
                 }
-
                 client.Clients.Photo = pic;
 
                 try
@@ -83,10 +83,16 @@ namespace SpeedSystem.Controllers
                     return View(client);
                     throw;
                 }
-               
-            }
+                client.Clients.AvailableCredit = 0;
+                client.Telephones[0].PersonId = client.Clients.PersonId;
 
-            return Json(new {resultClient = client.Clients.PersonId}, JsonRequestBehavior.AllowGet);
+                db.Telephones.Add(client.Telephones[0]);
+                await db.SaveChangesAsync();
+
+
+            }
+            return View(client);
+            return Json(new { resultClient = client.Clients.PersonId }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Clients/Edit/5
@@ -157,6 +163,7 @@ namespace SpeedSystem.Controllers
         }
 
         protected override void Dispose(bool disposing)
+
         {
             if (disposing)
             {
