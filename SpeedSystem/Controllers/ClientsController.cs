@@ -59,7 +59,10 @@ namespace SpeedSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                /**
+                //Inicia o valor de AvailableCredit como 0,00
+                client.Clients.AvailableCredit = 0;
+
+                /*
                  * Tratando fotografia, pego o arquivo que vem em photoFile, 
                  * faço o upload, a após pego o endereco de armazenamento.
                  */
@@ -83,16 +86,20 @@ namespace SpeedSystem.Controllers
                     return View(client);
                     throw;
                 }
-                client.Clients.AvailableCredit = 0;
-                client.Telephones[0].PersonId = client.Clients.PersonId;
 
-                db.Telephones.Add(client.Telephones[0]);
-                await db.SaveChangesAsync();
-
+                
+                
+                foreach (var tel in client.Telephones)
+                {
+                    tel.PersonId = client.Clients.PersonId;
+                    db.Telephones.Add(tel);
+                    await db.SaveChangesAsync();
+                }
 
             }
+
             return View(client);
-            return Json(new { resultClient = client.Clients.PersonId }, JsonRequestBehavior.AllowGet);
+
         }
 
         // GET: Clients/Edit/5
