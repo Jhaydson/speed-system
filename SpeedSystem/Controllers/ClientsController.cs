@@ -46,7 +46,6 @@ namespace SpeedSystem.Controllers
             ClientViewModel model = new ClientViewModel();
             model.Clients = new Client();
 
-
             return View(model);
         }
 
@@ -83,12 +82,11 @@ namespace SpeedSystem.Controllers
                 catch (System.Exception)
                 {
                     ModelState.AddModelError(string.Empty, "Não possível adicionar, por ter um item cadastrado com esse mesmo nome!");
-                    return View(client);
+                    return View();
                     throw;
                 }
 
-                
-                
+
                 foreach (var tel in client.Telephones)
                 {
                     tel.PersonId = client.Clients.PersonId;
@@ -98,7 +96,7 @@ namespace SpeedSystem.Controllers
 
             }
 
-            return View(client);
+            return RedirectToAction("Index");
 
         }
 
@@ -164,6 +162,7 @@ namespace SpeedSystem.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Client client = await db.People.FindAsync(id);
+            Telephone tel = await db.Telephones.FindAsync(id);
             db.People.Remove(client);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
