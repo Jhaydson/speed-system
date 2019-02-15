@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using SpeedSystem.Models;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace SpeedSystem.Data
@@ -25,6 +26,7 @@ namespace SpeedSystem.Data
         public System.Data.Entity.DbSet<SpeedSystem.Models.Client> People { get; set; }
 
         public System.Data.Entity.DbSet<SpeedSystem.Models.Telephone> Telephones { get; set; }
+        public System.Data.Entity.DbSet<SpeedSystem.Models.Address> Address { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +36,13 @@ namespace SpeedSystem.Data
 
             // DESABILITAR CASCATAS
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            modelBuilder.Entity<Person>()
+                .HasMany(e => e.Telephones)
+                .WithRequired(e => e.Person)
+                .HasForeignKey(e => e.PersonId)
+                .WillCascadeOnDelete(true);
+
         }
 
         

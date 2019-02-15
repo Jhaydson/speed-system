@@ -7,18 +7,18 @@ namespace SpeedSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class erros : IMigrationMetadata
+    public sealed partial class CascadePerson : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(erros));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CascadePerson));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902091928224_erros"; }
+            get { return "201902151055510_CascadePerson"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

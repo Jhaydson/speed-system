@@ -9,7 +9,7 @@ namespace SpeedSystem.Models.ViewModels
     {
         public Client Clients { get; set; }
         public Telephone[] Telephones { get; set; }
-        public Address Address { get; set; }
+        public Address[] Address { get; set; }
     
     }
 }

@@ -68,55 +68,12 @@ function AddTel() {
     $('#bt-addTel').addClass('hide');
 }
 
-function SaveClient() {
-    debugger;
+function AddAddress() {
+    var clone = document.getElementById('address1').cloneNode(true);
+    var destino = document.getElementById('addressplus');
+    destino.appendChild(clone);
 
-    var Clients_TypePerson = $('#Clients_TypePerson').val();
-    var Clients_PhysicalOrLegalName = document.getElementById('Clients_PhysicalOrLegalName').value;
-    var Clients_LastNameOrFantasyName = document.getElementById('Clients_LastNameOrFantasyName').value;
-    var Clients_Email = document.getElementById('Clients_Email').value;
-    var Clients_Genre = document.getElementById('Clients_Genre').value;
-    var Clients_CpfOrCnpj = document.getElementById('Clients_CpfOrCnpj').value;
-    var Clients_Responsible = document.getElementById('Clients_Responsible').value;
-    var Clients_DateBirthOrOpening = document.getElementById('Clients_DateBirthOrOpening').value;
-    var Clients_StatusClient = document.getElementById('Clients_StatusClient').value;
-    //var Clients_PhotoFile = $document.getElementById('Clients_PhotoFile').value;
+    var camposClonados = clone.getElementByTagName('input');
 
-    var token = $('input[name="__RequestVerificationToken"]').val();
-    var tokenadr = $('form[action="/Clients/Create"] input[name="__RequestVerificationToken"]').val();
-    var headers = {};
-    var headersadr = {};
-    headers['__RequestVerificationToken'] = token;
-    headersadr['__RequestVerificationToken'] = tokenadr;
-
-    //Gravar 
-    var url = "/Clients/Create";
-
-    $.ajax({
-        url: url
-        , type: "POST"
-        , dataType: "json"
-        , headers: headersadr
-        , data: ({
-            Clients_PersonId: 0,
-            Clients_TypePerson: Clients_TypePerson,
-            Clients_PhysicalOrLegalName: Clients_PhysicalOrLegalName,
-            Clients_LastNameOrFantasyName: Clients_LastNameOrFantasyName,
-            Clients_Email: Clients_Email,
-            Clients_Genre: Clients_Genre,
-            Clients_CpfOrCnpj: Clients_CpfOrCnpj,
-            Clients_Responsible: Clients_Responsible,
-            Clients_DateBirthOrOpening: Clients_DateBirthOrOpening,
-            Clients_StatusClient: Clients_StatusClient,
-           // Clients_PhotoFile: Clients_PhotoFile,
-            __RequestVerificationToken: token
-        })
-        , sucess: function (data) {
-            if (data.ResultClient) {
-                debugger;
-            }
-        }
-
-    }
-    );
-};
+    for (i = 0; )
+}

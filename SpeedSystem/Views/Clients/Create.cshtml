@@ -5,6 +5,8 @@
 }
 
 
+
+
 <!--breadcrumbs start-->
 <div id="breadcrumbs-wrapper">
     <!-- Search for small screen -->
@@ -216,8 +218,91 @@
                         </div>
 
                     </div>
-                    
+
                 </div>
+
+                <div class="card-panel">
+                    <div class="collapsible-header">
+                        <i class="material-icons">explore</i> Endereços
+                    </div>
+                    <br />
+                    <div id="address1">
+                        <div class="row">
+                            <div class="col s3">
+                                <div class="col-md-10">
+                                    Tipo de Endereço
+                                    @Html.EnumDropDownListFor(model => model.Address[0].TypeAddress, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address[0].TypeAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class=" col s2">
+                                <label>@Html.DisplayNameFor(model => model.Address[0].ZipCode)</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Address[0].ZipCode, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address[0].ZipCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class=" col s3">
+                                <label>Quadra ou Rua</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Address[0].Block, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Address[0].Block, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class=" col s1">
+                                <label>@Html.DisplayNameFor(model => model.Address[0].Lot)</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Address[0].Lot, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address[0].Lot, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class=" col s3">
+                                <label>@Html.DisplayNameFor(model => model.Address[0].Neighborhood)</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Address[0].Neighborhood, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Address[0].Neighborhood, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                            <div class=" col s3">
+                                <label>@Html.DisplayNameFor(model => model.Address[0].City)</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Address[0].City, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Address[0].City, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class=" col s2">
+                                <label>@Html.DisplayNameFor(model => model.Address[0].State)</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Address[0].State, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Address[0].State, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="addressplus" class="hide">
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="btn #1976d2 blue darken-2" onclick="AddAddress();" id="bt-addTel">
+                            Adicionar Novo Endereço
+                            <i class="material-icons right">add</i>
+                        </div>
+
+                    </div>
+
+                </div>
+
 
                 <div class="card-panel">
                     <div class="form-group">
@@ -234,9 +319,48 @@
 }
 
 @section Scripts {
+
+
     <script src="~/Scripts/js/scripts/config-create-and-edit-person.js" type="text/javascript"></script>
 
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+$(document).ready(function () {
+
+    $('#Address_0__ZipCode').mask('99.999-999');
+
+    var token = $('input[name="__RequestVerificationToken"]').val();
+    var tokenadr = $('form[action="/Clients/Create"] input[name="__RequestVerificationToken"]').val();
+    var headers = {};
+    var headersadr = {};
+    headers['__RequestVerificationToken'] = token;
+    headersadr['__RequestVerificationToken'] = tokenadr;
+
+    /* Executa a requisição quando o campo CEP perder o foco */
+    $('#Address_0__ZipCode').blur(function () {
+         /* Configura a requisição AJAX */
+        $.ajax({
+            url: '@Url.Action("CorreiosBusca", "Clients")',
+            type: "GET",
+            headers: headersadr,
+            contentType: "application/json",
+            data: { cep: $("#Address_0__ZipCode").val(), __RequestVerificationToken: token },
+            success: function (result) {
+                $("#Address_0__Block").val(result[0])
+                $("#Address_0__Neighborhood").val(result[1])
+                $("#Address_0__City").val(result[2])
+                $("#Address_0__State").val(result[3])
+            },
+            error: function (xhr, exception) {
+                alert('Cep não localizado');
+            }
+        });
+        return false;
+    });
+});
+    </script>
+
 
 
 }

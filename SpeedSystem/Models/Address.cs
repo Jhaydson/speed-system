@@ -12,38 +12,38 @@ namespace SpeedSystem.Models
         [Key]
         public int AddressId { get; set; }
 
-        //Numero
-        [Required]
-        [Display(Name = "Logradouro")]
-        public string PublicPlace { get; set; }
-
         //Quadra
-        [Required]
+
         [Display(Name = "Quadra")]
         public string Block { get; set; }
 
         //Lote
-        [Required]
+
         [Display(Name = "Lote")]
         public string Lot { get; set; }
 
-        //CEP
+        //Lote
         [Required]
+        [Display(Name = "Bairro")]
+        public string Neighborhood { get; set; }
+
+        //CEP
+
         [Display(Name = "CEP")]
         public string ZipCode { get; set; }
 
         //Numero
-        [Required]
+
         [Display(Name = "Cidade")]
         public string City { get; set; }
 
         //Numero
-        [Required]
+
         [Display(Name = "Estado")]
         public string State { get; set; }
 
         //Numero
-        [Required]
+
         [Display(Name = "Tipo de Endereço")]
         public TypeAddress TypeAddress { get; set; }
 

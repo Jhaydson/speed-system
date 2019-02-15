@@ -14,7 +14,6 @@ namespace SpeedSystem.Models
         public int TelephoneId { get; set; }
 
         //Numero
-        [Required]
         [Display(Name = "Numero")]
         [DataType(DataType.PhoneNumber)]
         public string Number { get; set; }

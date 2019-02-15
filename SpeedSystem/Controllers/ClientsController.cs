@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using SpeedSystem.Data;
-using SpeedSystem.Models;
+﻿using SpeedSystem.Data;
 using SpeedSystem.Helpers;
+using SpeedSystem.Models;
 using SpeedSystem.Models.ViewModels;
+using System.Data.Entity;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace SpeedSystem.Controllers
 {
@@ -49,6 +44,24 @@ namespace SpeedSystem.Controllers
             return View(model);
         }
 
+
+        //Consultar CEP puxar o endereco
+        public JsonResult CorreiosBusca(string cep)
+        {
+            var ws = new WSCorreios.AtendeClienteClient();
+            var res = ws.consultaCEP(cep);
+
+            string[] result = new string[6];
+            result[0] = res.end;
+            result[1] = res.bairro;
+            result[2] = res.cidade;
+            result[3] = res.uf;
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+
         // POST: Clients/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -86,11 +99,17 @@ namespace SpeedSystem.Controllers
                     throw;
                 }
 
-
                 foreach (var tel in client.Telephones)
                 {
                     tel.PersonId = client.Clients.PersonId;
                     db.Telephones.Add(tel);
+                    await db.SaveChangesAsync();
+                }
+
+                foreach (var address in client.Address)
+                {
+                    address.PersonId = client.Clients.PersonId;
+                    db.Address.Add(address);
                     await db.SaveChangesAsync();
                 }
 
@@ -162,7 +181,6 @@ namespace SpeedSystem.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Client client = await db.People.FindAsync(id);
-            Telephone tel = await db.Telephones.FindAsync(id);
             db.People.Remove(client);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
