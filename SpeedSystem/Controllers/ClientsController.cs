@@ -2,6 +2,7 @@
 using SpeedSystem.Helpers;
 using SpeedSystem.Models;
 using SpeedSystem.Models.ViewModels;
+using System;
 using System.Data.Entity;
 using System.Net;
 using System.Threading.Tasks;
@@ -73,6 +74,7 @@ namespace SpeedSystem.Controllers
             {
                 //Inicia o valor de AvailableCredit como 0,00
                 client.Clients.AvailableCredit = 0;
+                client.Clients.DataCreate = DateTime.Now;
 
                 /*
                  * Tratando fotografia, pego o arquivo que vem em photoFile, 
