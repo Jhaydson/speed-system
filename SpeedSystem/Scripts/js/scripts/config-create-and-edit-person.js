@@ -64,16 +64,19 @@
 });
 
 function AddTel() {
+    //Adiciona campos de telephone de acordo com clique no botão.
     $('#contact2').removeClass('hide');
     $('#bt-addTel').addClass('hide');
 }
 
+
 function AddAddress() {
-    var clone = document.getElementById('address1').cloneNode(true);
-    var destino = document.getElementById('addressplus');
-    destino.appendChild(clone);
+    //Adiciona campos de endereço de acordo com clique no botão.
+    if ($('#address2').hasClass('hide')) {
+        $('#address2').removeClass('hide');
+    } else {
+        $('#address3').removeClass('hide');
+        $('#bt-addAdd2').addClass('hide');
+    };
 
-    var camposClonados = clone.getElementByTagName('input');
-
-    for (i = 0; )
 }
