@@ -34,13 +34,67 @@
 <div class="container">
     <div class="section">
         <div class="col s12">
+            <div class="card-panel">
+                <div class="collapsible-header">
+                    <i class="material-icons">account_circle</i> Visualizar Cliente
+                </div>
+                <br />
+                <div class="row">
+                    <div class=" col s6">
+                        <label>@Html.DisplayNameFor(model => model.TypePerson)</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TypePerson, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col s6">
+                        <label>@ViewBag.Name</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhysicalOrLegalName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        </div>
+                    </div>
+                    <div class=" col s6">
+                        <label>@ViewBag.LastName</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.LastNameOrFantasyName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        </div>
+                    </div>
+                    <div class=" col s2">
+                        <label>@ViewBag.cpf</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CpfOrCnpj, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        </div>
+                    </div>
+                    <div class=" col s1">
+                        <label>@ViewBag.rg</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.RGOrStateRegistration)
+                        </div>
+                    </div>
+                    @if (typeperson == "Fisica")
+                    {
+                        <div class=" col s2">
+                            <label>Sexo</label>
+                            <div class="col-md-10">
+                                @Html.DisplayFor(model => model.Genre)
+                            </div>
+                        </div>
+                    }
+                    <div class=" col s2">
+                        <label>@ViewBag.date</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.DateBirthOrOpening)
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
             <div>
-
-
                 <a class=" waves-effect waves-light  btn #00e676 green accent-3" href="@Url.Action("Index")"> <i class="material-icons left">arrow_back</i>Voltar</a>
                 <a class=" waves-effect waves-light  btn #757575 grey darken-1" href="@Url.Action("Edit", new { id = Model.PersonId })"><i class="material-icons left">mode_edit</i>Editar</a>
-
-
 
             </div> <br />
             <table class="Highlight striped">
@@ -135,8 +189,8 @@
                         <td>@Html.DisplayFor(model => model.StatusClient)</td>
 
                     </tr>
-                    </tbody>
-</table>
+                </tbody>
+            </table>
 
         </div>
     </div>

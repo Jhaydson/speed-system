@@ -213,10 +213,6 @@
     <Compile Include="Migrations\201902041909178_Att.Designer.cs">
       <DependentUpon>201902041909178_Att.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902151055510_CascadePerson.cs" />
-    <Compile Include="Migrations\201902151055510_CascadePerson.Designer.cs">
-      <DependentUpon>201902151055510_CascadePerson.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -1238,9 +1234,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902041909178_Att.resx">
       <DependentUpon>201902041909178_Att.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902151055510_CascadePerson.resx">
-      <DependentUpon>201902151055510_CascadePerson.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
